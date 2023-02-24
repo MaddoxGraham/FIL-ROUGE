@@ -1,0 +1,52 @@
+INSERT INTO COEFFICIENT (idCoeff, nomination) VALUES 
+	(1 ,'particulier'),
+	(2,'professionnel');
+	
+INSERT INTO COMMERCIAL (idCommercial, nom,prenom, specificite) VALUES 
+	(1,'Shepard','John','particuliers'),
+	(2,'Urdnot','Wrex', 'professionnels'),
+	(3,'Solus','Mordin','particuliers' ),
+	(4,'T\'Soni','Liara','particuliers'),	
+	(5,'Krios','Thane','professionnels');
+
+
+INSERT INTO CLIENT (idClient,nom,prenom,mail,telephone,login,pwd,dateInsciprtion,raisonSociale,idCoeff,idCommercial)
+VALUES
+ (1,'Rose','Lisa', 'L.Rose@gmail.com','06-02-54-68-25','LisaRose','LisaRoseRocks','2023-02-23 15:24:31',NULL,1,3),
+ (2,'Moreau','Jeff', 'Alliance4Ever@gmail.com','09-66-54-25-68','Joker','sr2pilots','2023-02-23 15:24:31',NULL,1,1),
+ (3,'Vakarian','Garrus', 'Calibration@hotmail.com','06-55-68-47-01','Archangel','calibrate4life','2023-02-23 15:24:31','CALIBRATECORP',2,2),
+ (4,'Harper','Jack', 'Harper@yahoo.fr','09-96-02-57-22','IllusiveMan','letsallbetraitors','2023-02-23 15:24:31',NULL,1,5),
+ (5,'Zero','Jack', 'fuckyou@gmail.com','09-10-58-24-74','Subject0','bioticsispower','2023-02-23 15:24:31',NULL,1,4);
+ 
+ INSERT INTO CATEGORIE (idCat, nomination) VALUES 
+	(1 ,'Baguettes'),
+	(3,'Baguettes coeur de chêne'),
+	(4,'Baguettes plume de phoenix'),
+	(5,'Baguettes crin de Licorne'),
+	(6 ,'Robes'),
+	(7 ,'Capes'),
+	(8 ,'Vetements'),
+	(9 ,'Gants'),
+	(10 ,'Lunettes'),
+	(11 ,'chouette'),
+	(12 ,'chat'),
+	(13 ,'crapaud'),
+	(14 ,'rat'),
+	(15,'Animaux');
+	
+	
+ INSERT INTO PRODUIT (RefProduit, shortLibel,longLibel,prxHT,idCat) VALUES 
+	(100 ,'Baguette rouge', 'manche en bois d'accacia, son coeur de chêne permet de viser les plus hauts pouvoir, bonne prise en main',95.23,3),
+	(103,'Chat roux','sage et prêt à metamorphoser ce petit chat roux pourras vous accompagner durant votre année a poudlard',150,12),
+	(104,'Baguettes plume de phoenix'),
+	(105,'Baguettes crin de Licorne'),
+	(106 ,'Robes'),
+	(107 ,'Capes'),
+	(108 ,'Vetements'),
+	(109 ,'Gants'),
+	(110 ,'Lunettes'),
+	(111 ,'chouette'),
+	(112 ,'chat'),
+	(113 ,'crapaud'),
+	(114 ,'rat'),
+	(115,'Animaux');
