@@ -145,12 +145,12 @@ CREATE TABLE `COMMANDE` (
   `dateCom` datetime NOT NULL DEFAULT curdate(),
   `reduction` int(11) DEFAULT NULL,
   `TotalTTC` decimal(5,0) DEFAULT NULL,
-  `statut` enum('en cours','validée') NOT NULL,
+  `statut` enum('en cours','clos') NOT NULL,
   `idClient` int(11) NOT NULL,
   PRIMARY KEY (`idCom`,`dateCom`),
-  KEY `idClient` (`idClient`),
-  CONSTRAINT `COMMANDE_ibfk_1` FOREIGN KEY (`idClient`) REFERENCES `CLIENT` (`idClient`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  KEY `COMMANDE_ibfk_1` (`idClient`),
+  CONSTRAINT `COMMANDE_ibfk_1` FOREIGN KEY (`idClient`) REFERENCES `CLIENT` (`idClient`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -159,9 +159,66 @@ CREATE TABLE `COMMANDE` (
 
 LOCK TABLES `COMMANDE` WRITE;
 /*!40000 ALTER TABLE `COMMANDE` DISABLE KEYS */;
-INSERT INTO `COMMANDE` VALUES (1,'2023-02-24 09:22:13',NULL,NULL,'en cours',4);
+INSERT INTO `COMMANDE` VALUES (1,'2023-02-24 09:22:13',NULL,NULL,'clos',4),(5,'2023-02-28 16:36:30',NULL,NULL,'en cours',3),(7,'2023-03-01 08:45:31',NULL,NULL,'clos',5);
 /*!40000 ALTER TABLE `COMMANDE` ENABLE KEYS */;
 UNLOCK TABLES;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_unicode_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`admin`@`localhost`*/ /*!50003 TRIGGER CreerHistorique AFTER UPDATE ON COMMANDE
+FOR EACH ROW
+    BEGIN
+        DECLARE CurrentCom INT;
+        DECLARE CurrentIdCli INT;
+        DECLARE CurrentDateCom DATETIME;
+        DECLARE CurrentNom VARCHAR(50); 
+        DECLARE CurrentPrenom VARCHAR(50); 
+        DECLARE CurrentMail VARCHAR(50); 
+        DECLARE CurrentTel VARCHAR(50); 
+        DECLARE CurrentRaisonSociale VARCHAR(50);  
+		DECLARE CurrentStatut VARCHAR(50);
+        DECLARE OldStat VARCHAR(255);
+        DECLARE NewStat VARCHAR(255);
+
+        SET CurrentCom = OLD.idCom;
+        SET CurrentIdCli = OLD.idClient;
+        SET CurrentDateCom = OLD.dateCom;
+        SET CurrentNom = (SELECT C.nom from COMMANDE as CO JOIN CLIENT AS C ON CO.idClient = C.idClient where idCom = CurrentCom);
+        SET CurrentPrenom = (SELECT C.prenom from COMMANDE as CO JOIN CLIENT AS C ON CO.idClient = C.idClient where idCom = CurrentCom);
+        SET CurrentMail = (SELECT C.mail from COMMANDE as CO JOIN CLIENT AS C ON CO.idClient = C.idClient where idCom = CurrentCom);
+        SET CurrentTel = (SELECT C.telephone from COMMANDE as CO JOIN CLIENT AS C ON CO.idClient = C.idClient where idCom = CurrentCom);
+        SET CurrentRaisonSociale = (SELECT C.raisonSociale from COMMANDE as CO JOIN CLIENT AS C ON CO.idClient = C.idClient where idCom = CurrentCom);
+		SET CurrentStatut = NEW.statut ;
+        SET OldStat = OLD.statut;        
+        
+    IF CurrentStatut = 'clos' AND OldStat != 'clos'
+    THEN
+    INSERT INTO HISTORIQUE (
+        HISTORIQUE.idClient,
+        HISTORIQUE.idCom,
+        HISTORIQUE.dateCom,
+        HISTORIQUE.nomHistorique,
+        HISTORIQUE.prenomHistorique,
+        HISTORIQUE.mailHistorique,
+        HISTORIQUE.telephoneHistorique,
+        HISTORIQUE.raisonsocialeHistorique) VALUES(CurrentIdCli,CurrentCom,CurrentDateCom,CurrentNom,CurrentPrenom,CurrentMail,CurrentTel,CurrentRaisonSociale);
+        END IF;
+        IF OldStat = 'clos'
+        THEN
+        SIGNAL SQLSTATE '40000' SET MESSAGE_TEXT = 'Aucun accès aux valeurs archivées. ';
+        END IF;
+    END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
 -- Table structure for table `COMMERCIAL`
@@ -198,11 +255,15 @@ DROP TABLE IF EXISTS `FACTURE`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `FACTURE` (
   `numeroFact` int(11) NOT NULL AUTO_INCREMENT,
-  `delaisPayement` date NOT NULL DEFAULT curdate(),
+  `delaisPayement` date DEFAULT NULL,
   `modePayement` enum('virement','cheque','CB') DEFAULT NULL,
   `datePayement` date DEFAULT NULL,
-  PRIMARY KEY (`numeroFact`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `idCom` int(11) DEFAULT NULL,
+  `dateCom` datetime DEFAULT NULL,
+  PRIMARY KEY (`numeroFact`),
+  KEY `idCom` (`idCom`,`dateCom`),
+  CONSTRAINT `FACTURE_ibfk_1` FOREIGN KEY (`idCom`, `dateCom`) REFERENCES `COMMANDE` (`idCom`, `dateCom`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -211,37 +272,43 @@ CREATE TABLE `FACTURE` (
 
 LOCK TABLES `FACTURE` WRITE;
 /*!40000 ALTER TABLE `FACTURE` DISABLE KEYS */;
-INSERT INTO `FACTURE` VALUES (1,'2023-02-24','CB','2023-02-24');
+INSERT INTO `FACTURE` VALUES (1,'2023-02-24','CB','2023-02-24',1,'2023-02-24 09:22:13'),(3,'2023-02-28','cheque',NULL,5,'2023-02-28 16:36:30');
 /*!40000 ALTER TABLE `FACTURE` ENABLE KEYS */;
 UNLOCK TABLES;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_unicode_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`admin`@`localhost`*/ /*!50003 TRIGGER `CalculDelais` AFTER INSERT ON `FACTURE` FOR EACH ROW BEGIN
 
---
--- Table structure for table `FACTURER`
---
-
-DROP TABLE IF EXISTS `FACTURER`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `FACTURER` (
-  `idCom` int(11) NOT NULL,
-  `dateCom` datetime NOT NULL,
-  `numeroFact` int(11) NOT NULL,
-  PRIMARY KEY (`idCom`,`dateCom`,`numeroFact`),
-  KEY `numeroFact` (`numeroFact`),
-  CONSTRAINT `FACTURER_ibfk_1` FOREIGN KEY (`idCom`, `dateCom`) REFERENCES `COMMANDE` (`idCom`, `dateCom`),
-  CONSTRAINT `FACTURER_ibfk_2` FOREIGN KEY (`numeroFact`) REFERENCES `FACTURE` (`numeroFact`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `FACTURER`
---
-
-LOCK TABLES `FACTURER` WRITE;
-/*!40000 ALTER TABLE `FACTURER` DISABLE KEYS */;
-INSERT INTO `FACTURER` VALUES (1,'2023-02-24 09:22:13',1);
-/*!40000 ALTER TABLE `FACTURER` ENABLE KEYS */;
-UNLOCK TABLES;
+	DECLARE PayementPrevu DATE;
+    DECLARE DateCommande DATE;
+    DECLARE DateActuelle DATE; 
+    
+    SET DateCommande = (SELECT new.dateCom from COMMANDE LIMIT 1 ) ;
+	SET PayementPrevu = (SELECT DATE_ADD(DateCommande, INTERVAL 90 DAY)) ;
+	
+    INSERT INTO FACTURE (delaisPayement) VALUES (PayementPrevu);
+ 	
+  
+    
+/*	SELECT COEFFICIENT.nomination, CLIENT.nom, COMMANDE.idCom, FACTURE.idCom from FACTURE
+    JOIN COMMANDE ON COMMANDE.idCom = FACTURE.idCom
+    JOIN CLIENT ON CLIENT.idClient = COMMANDE.idClient
+    JOIN COEFFICIENT ON CLIENT.idCoeff = COEFFICIENT.idCoeff 
+    where COEFFICIENT.idCoeff = 2 */
+    
+ END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
 -- Table structure for table `FOURNISSEUR`
@@ -327,9 +394,9 @@ CREATE TABLE `HISTORIQUE` (
   `telephoneHistorique` varchar(50) DEFAULT NULL,
   `raisonsocialeHistorique` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`idClient`,`idCom`,`dateCom`),
-  KEY `idCom` (`idCom`,`dateCom`),
-  CONSTRAINT `HISTORIQUE_ibfk_1` FOREIGN KEY (`idClient`) REFERENCES `CLIENT` (`idClient`),
-  CONSTRAINT `HISTORIQUE_ibfk_2` FOREIGN KEY (`idCom`, `dateCom`) REFERENCES `COMMANDE` (`idCom`, `dateCom`)
+  KEY `HISTORIQUE_ibfk_2` (`idCom`,`dateCom`),
+  CONSTRAINT `HISTORIQUE_ibfk_1` FOREIGN KEY (`idClient`) REFERENCES `CLIENT` (`idClient`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `HISTORIQUE_ibfk_2` FOREIGN KEY (`idCom`, `dateCom`) REFERENCES `COMMANDE` (`idCom`, `dateCom`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -339,7 +406,7 @@ CREATE TABLE `HISTORIQUE` (
 
 LOCK TABLES `HISTORIQUE` WRITE;
 /*!40000 ALTER TABLE `HISTORIQUE` DISABLE KEYS */;
-INSERT INTO `HISTORIQUE` VALUES (4,1,'2023-02-24 09:22:13','Harper','Jack','Harper@yahoo.fr','09-96-02-57-22',NULL);
+INSERT INTO `HISTORIQUE` VALUES (4,1,'2023-02-24 09:22:13','Harper','Jack','Harper@yahoo.fr','09-96-02-57-22',NULL),(5,7,'2023-03-01 08:45:31','Zero','Jack','fuckyou@gmail.com','09-10-58-24-74',NULL);
 /*!40000 ALTER TABLE `HISTORIQUE` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -421,7 +488,7 @@ CREATE TABLE `LIVRAISON` (
   PRIMARY KEY (`idLiv`),
   KEY `idCom` (`idCom`,`dateCom`),
   CONSTRAINT `LIVRAISON_ibfk_1` FOREIGN KEY (`idCom`, `dateCom`) REFERENCES `COMMANDE` (`idCom`, `dateCom`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -578,4 +645,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-02-28 14:16:37
+-- Dump completed on 2023-03-01  9:34:31
