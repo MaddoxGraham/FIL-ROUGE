@@ -38,15 +38,29 @@ VALUES
  INSERT INTO PRODUIT (RefProduit, shortLibel,longLibel,prxHT,idCat) VALUES 
 	(100 ,'Baguette rouge', 'manche en bois d'accacia, son coeur de chêne permet de viser les plus hauts pouvoir, bonne prise en main',95.23,3),
 	(103,'Chat roux','sage et prêt à metamorphoser ce petit chat roux pourras vous accompagner durant votre année a poudlard',150,12),
-	(104,'Baguettes plume de phoenix'),
-	(105,'Baguettes crin de Licorne'),
-	(106 ,'Robes'),
-	(107 ,'Capes'),
-	(108 ,'Vetements'),
-	(109 ,'Gants'),
-	(110 ,'Lunettes'),
-	(111 ,'chouette'),
-	(112 ,'chat'),
-	(113 ,'crapaud'),
-	(114 ,'rat'),
-	(115,'Animaux');
+	(104,'Chat gris','Ce petit chat espiègle et malin saura vous accompagner dans vos cours tout autant qu'il vous fera tourner en bourique ! ', 148.99,12),
+	(105,'Robe de Serdaigle','Robe de la maison Serdaigle, son fil à tisser magique vous assurera les premieres pages du Sorier bien Fringué', 57.12,7),
+	(106 ,'Robe de maison','robe de maison basique noire en fil de jobarbille, peut se décliner selon la maison de son possesseur',15.99,7),
+	(107 ,'gants de quidditch','gants de Quidditch renforcés en peau de dragon',7.53,9),
+	(108 ,'rat blanc','ce petit accolyte vous permettra de suivre vos cours de methamorphose convenablement',42,14),
+	(109 ,'Chouette brune','parfaite pour les longs courriers cette chouette vous permettra de garder le contact avec vos proche',78.99,11),
+	(110 ,'Lunettes ronde','Lunettes rondes pour un style sans erreurs',10.99,10),
+	(111 ,'Chouette blanche','rapide et discrète, cette chouette vous assurera une correspondance fiable et rapide',105.99,11),
+	(112 ,'Baguette accacia','Baguette en bois d'accacia avec coeur de dragon et plume de phoenix',189,99,4),
+	(113 ,'Baguette beige','cette baguette vous permettra de maitriser les sorts de soins, avec sn coeur en plume de phoenix',255,4),
+	(114 ,'Crapeaux chanteur','parfait pour un soliste ou un eleve du coeur des grenouilles, crapeau accordé en fa mineur',99.99,13),
+	(115,'Baguette blanche','Avec son coeur en crin de licorne, cette baguette vous accordera un pouvoir lumineux',187,99,5);
+	
+	
+	
+ INSERT INTO FOURNISSEUR (RefFournisseur, nomination) VALUES 
+	(1 ,'Ollivander'),
+	(3,'Gaichiffon'),
+	(4,'Animaux et Crin de cheval'),
+	(5,'HoneyDuck')
+	
+	
+	INSERT INTO `ADRESSE` (`IdAdresse`, `nominationAdresse`, `adresse`, `ville`, `pays`, `cp`, `actif`) VALUES (NULL, 'maison', '7 Rue de Pre au lard', 'pre au lard', 'france', '25142', '1'), (NULL, 'livraison', 'Rue Victor Krum', 'QuidditchCity', 'france', '29874', '1'), (NULL, 'maison', 'rue du normandy', 'alliance', 'france', '98547', '1'), (NULL, 'maison', 'rue du petit bout', 'auBout', 'france', '10245', '1'), (NULL, 'maison', 'avenue des turien', 'turienville', 'bruxelle', '35879', '0'), (NULL, 'maison', 'jesaispasquoi', 'jesaispasou', 'france', '32547', '1'), (NULL, 'livraison', 'serdaigle dormitary', 'poudlard', 'france', '78546', '1'), (NULL, 'facturation', 'rue du paradis', 'elliseum', 'france', '65874', '1');
+	
+	
+	INSERT INTO `HABITE` (`idClient`, `IdAdresse`) VALUES ('4', '1'), ('2', '3'), ('4', '2'), ('1', '6'), ('5', '8'), ('5', '5'), ('1', '4'), ('3', '6');
