@@ -2,7 +2,7 @@
 
 ## I. Identifier les acteurs
 
- * CLIENT ;
+ * <span style="background-color: #ec9ba4"> CLIENT </span> ;
  * COMMERCIAUX ;
 
 ## II.Différents cas d’usages par acteur
