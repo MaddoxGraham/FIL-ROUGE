@@ -1,0 +1,272 @@
+# Creation et etablissement de la base de donnée
+
+## I . Script création de la BDD 
+
+
+```
+DROP TABLE IF EXISTS filRouge.FOURNISSEUR;
+DROP TABLE IF EXISTS filRouge.CATEGORIE;
+DROP TABLE IF EXISTS filRouge.COMMERCIAL;
+DROP TABLE IF EXISTS filRouge.COEFFICIENT;  
+DROP TABLE IF EXISTS filRouge.ADRESSE;
+DROP TABLE IF EXISTS filRouge.FACTURE;
+DROP TABLE IF EXISTS filRouge.PRODUIT;
+DROP TABLE IF EXISTS filRouge.CLIENT;
+DROP TABLE IF EXISTS filRouge.COMMANDE;
+DROP TABLE IF EXISTS filRouge.LIVRAISON;
+DROP TABLE IF EXISTS filRouge.LIGNECOMMANDE; 
+DROP TABLE IF EXISTS filRouge.PHOTOS;
+DROP TABLE IF EXISTS filRouge.APPARTENIRCAT; 
+DROP TABLE IF EXISTS filRouge.STOCKER; 
+DROP TABLE IF EXISTS filRouge.HISTORIQUE; 
+DROP TABLE IF EXISTS filRouge.HABITE;    
+DROP TABLE IF EXISTS filRouge.LISTER;  
+DROP TABLE IF EXISTS filRouge.FACTURER;  
+
+CREATE TABLE FOURNISSEUR(
+   RefFournisseur INTEGER NOT NULL AUTO_INCREMENT,
+   nomination VARCHAR(255) NOT NULL,
+   PRIMARY KEY(RefFournisseur)
+);
+
+CREATE TABLE CATEGORIE(
+   idCat INTEGER NOT NULL AUTO_INCREMENT,
+   nomination VARCHAR(255),
+   PRIMARY KEY(idCat)
+);
+
+CREATE TABLE COMMERCIAL(
+   idCommercial INTEGER NOT NULL AUTO_INCREMENT,
+   nom VARCHAR(50),
+   prenom VARCHAR(50),
+   specificite ENUM('particuliers','professionnels'),
+   PRIMARY KEY(idCommercial)
+);
+
+CREATE TABLE COEFFICIENT(
+   idCoeff INTEGER NOT NULL AUTO_INCREMENT,
+   nomination VARCHAR(50),
+   PRIMARY KEY(idCoeff)
+);
+
+CREATE TABLE ADRESSE(
+   IdAdresse INTEGER NOT NULL AUTO_INCREMENT,
+   nominationAdresse ENUM('maison','livraison','facturation'),
+   adresse VARCHAR(50) NOT NULL,
+   ville VARCHAR(50) NOT NULL,
+   pays VARCHAR(50) NOT NULL,
+   cp VARCHAR(10) NOT NULL,
+   actif BOOLEAN NOT NULL,
+   PRIMARY KEY(IdAdresse)
+);
+
+CREATE TABLE FACTURE(
+   numeroFact INTEGER NOT NULL AUTO_INCREMENT,
+   delaisPayement DATE DEFAULT CURRENT_DATE NOT NULL,
+   modePayement ENUM('virement','cheque','CB'),
+   datePayement DATE,
+   PRIMARY KEY(numeroFact)
+);
+
+CREATE TABLE PRODUIT(
+   RefProduit INTEGER NOT NULL AUTO_INCREMENT,
+   shortLibel VARCHAR(255) NOT NULL,
+   longLibel TEXT,
+   prxHT DECIMAL(5.2) NOT NULL,
+   idCat INTEGER NOT NULL,
+   PRIMARY KEY(RefProduit),
+   FOREIGN KEY(idCat) REFERENCES CATEGORIE(idCat)
+);
+
+CREATE TABLE CLIENT(
+   idClient INTEGER NOT NULL AUTO_INCREMENT,
+   nom VARCHAR(50) NOT NULL,
+   prenom VARCHAR(50) NOT NULL,
+   mail VARCHAR(30) NOT NULL,
+   télephone VARCHAR(15),
+   login VARCHAR(50) NOT NULL,
+   pwd VARCHAR(30) NOT NULL,
+   dateInsciprtion DATETIME DEFAULT CURRENT_DATE NOT NULL,
+   raisonSociale VARCHAR(30),
+   idCoeff INTEGER NOT NULL,
+   idCommercial INTEGER  NOT NULL,
+   PRIMARY KEY(idClient),
+   FOREIGN KEY(idCoeff) REFERENCES COEFFICIENT(idCoeff),
+   FOREIGN KEY(idCommercial) REFERENCES COMMERCIAL(idCommercial)
+);
+
+CREATE TABLE COMMANDE(
+   idCom INTEGER NOT NULL AUTO_INCREMENT,
+   dateCom DATETIME DEFAULT CURRENT_DATE NOT NULL,
+   reduction INT ,
+   TotalTTC DECIMAL(5.2) NOT NULL,
+   statut ENUM('en cours','validée') NOT NULL,
+   idClient INTEGER NOT NULL,
+   PRIMARY KEY(idCom,dateCom),
+   FOREIGN KEY(idClient) REFERENCES CLIENT(idClient)
+);
+
+CREATE TABLE LIVRAISON(
+   idLiv INTEGER NOT NULL AUTO_INCREMENT,
+   dateLivraison DATE NOT NULL,
+   idCom INTEGER NOT NULL,
+   dateCom DATETIME NOT NULL,
+   PRIMARY KEY(idLiv),
+   FOREIGN KEY(idCom,dateCom) REFERENCES COMMANDE(idCom,dateCom)
+);
+
+CREATE TABLE LIGNECOMMANDE(
+   reference INTEGER NOT NULL AUTO_INCREMENT,
+   quantite INT NOT NULL,
+   designation VARCHAR(255) NOT NULL,
+   prix DECIMAL(5,2),
+   RefProduit INTEGER NOT NULL,
+   idCom INTEGER NOT NULL,
+   dateCom DATETIME NOT NULL,
+   PRIMARY KEY(reference),
+   FOREIGN KEY(RefProduit) REFERENCES PRODUIT(RefProduit),
+   FOREIGN KEY(idCom, dateCom) REFERENCES COMMANDE(idCom, dateCom)
+);
+
+CREATE TABLE PHOTOS(
+   idPhoto INTEGER NOT NULL AUTO_INCREMENT,
+   src VARCHAR(255) NOT NULL,
+   majorPicture BOOLEAN NOT NULL,
+   RefProduit INTEGER NOT NULL,
+   PRIMARY KEY(idPhoto),
+   FOREIGN KEY(RefProduit) REFERENCES PRODUIT(RefProduit)
+);
+
+CREATE TABLE APPARTENIRCAT(
+   idCat INTEGER,
+   sousCat INTEGER,
+   PRIMARY KEY(idCat, sousCat),
+   FOREIGN KEY(idCat) REFERENCES CATEGORIE(idCat),
+   FOREIGN KEY(sousCat) REFERENCES CATEGORIE(idCat)
+);
+
+CREATE TABLE STOCKER(
+   RefProduit INTEGER,
+   RefFournisseur INTEGER,
+   quantite INT,
+   PRIMARY KEY(RefProduit, RefFournisseur),
+   FOREIGN KEY(RefProduit) REFERENCES PRODUIT(RefProduit),
+   FOREIGN KEY(RefFournisseur) REFERENCES FOURNISSEUR(RefFournisseur)
+);
+
+CREATE TABLE HISTORIQUE(
+   idClient INTEGER,
+   idCom INTEGER,
+   dateCom DATETIME ,
+   nomHistorique VARCHAR(50) NOT NULL,
+   prenomHistorique VARCHAR(50) NOT NULL,
+   mailHistorique VARCHAR(50) NOT NULL,
+   telephoneHistorique VARCHAR(50),
+   raisonsocialeHistorique VARCHAR(50),
+   PRIMARY KEY(idClient, idCom, dateCom),
+   FOREIGN KEY(idClient) REFERENCES CLIENT(idClient),
+   FOREIGN KEY(idCom, dateCom) REFERENCES COMMANDE(idCom, dateCom)
+);
+
+CREATE TABLE HABITE(
+   idClient INTEGER,
+   IdAdresse INTEGER,
+   PRIMARY KEY(idClient, IdAdresse),
+   FOREIGN KEY(idClient) REFERENCES CLIENT(idClient),
+   FOREIGN KEY(IdAdresse) REFERENCES ADRESSE(IdAdresse)
+);
+
+CREATE TABLE LISTER(
+   RefProduit INTEGER,
+   idLiv INTEGER,
+   quantite INT NOT NULL,
+   designation VARCHAR(255) NOT NULL,
+   PRIMARY KEY(RefProduit, idLiv),
+   FOREIGN KEY(RefProduit) REFERENCES PRODUIT(RefProduit),
+   FOREIGN KEY(idLiv) REFERENCES LIVRAISON(idLiv)
+);
+
+CREATE TABLE FACTURER(
+   idCom INTEGER,
+   dateCom DATETIME,
+   numeroFact INTEGER,
+   PRIMARY KEY(idCom, dateCom, numeroFact),
+   FOREIGN KEY(idCom, dateCom) REFERENCES COMMANDE(idCom, dateCom),
+   FOREIGN KEY(numeroFact) REFERENCES FACTURE(numeroFact)
+    );
+```
+
+## Peuplement de la base de données 
+
+```
+INSERT INTO COEFFICIENT (idCoeff, nomination) VALUES 
+	(1 ,'particulier'),
+	(2,'professionnel');
+	
+INSERT INTO COMMERCIAL (idCommercial, nom,prenom, specificite) VALUES 
+	(1,'Shepard','John','particuliers'),
+	(2,'Urdnot','Wrex', 'professionnels'),
+	(3,'Solus','Mordin','particuliers' ),
+	(4,'T\'Soni','Liara','particuliers'),	
+	(5,'Krios','Thane','professionnels');
+
+
+INSERT INTO CLIENT (idClient,nom,prenom,mail,telephone,login,pwd,dateInsciprtion,raisonSociale,idCoeff,idCommercial)
+VALUES
+ (1,'Rose','Lisa', 'L.Rose@gmail.com','06-02-54-68-25','LisaRose','LisaRoseRocks','2023-02-23 15:24:31',NULL,1,3),
+ (2,'Moreau','Jeff', 'Alliance4Ever@gmail.com','09-66-54-25-68','Joker','sr2pilots','2023-02-23 15:24:31',NULL,1,1),
+ (3,'Vakarian','Garrus', 'Calibration@hotmail.com','06-55-68-47-01','Archangel','calibrate4life','2023-02-23 15:24:31','CALIBRATECORP',2,2),
+ (4,'Harper','Jack', 'Harper@yahoo.fr','09-96-02-57-22','IllusiveMan','letsallbetraitors','2023-02-23 15:24:31',NULL,1,5),
+ (5,'Zero','Jack', 'fuckyou@gmail.com','09-10-58-24-74','Subject0','bioticsispower','2023-02-23 15:24:31',NULL,1,4);
+ 
+ INSERT INTO CATEGORIE (idCat, nomination) VALUES 
+	(1 ,'Baguettes'),
+	(3,'Baguettes coeur de chêne'),
+	(4,'Baguettes plume de phoenix'),
+	(5,'Baguettes crin de Licorne'),
+	(6 ,'Robes'),
+	(7 ,'Capes'),
+	(8 ,'Vetements'),
+	(9 ,'Gants'),
+	(10 ,'Lunettes'),
+	(11 ,'chouette'),
+	(12 ,'chat'),
+	(13 ,'crapaud'),
+	(14 ,'rat'),
+	(15,'Animaux');
+	
+	
+ INSERT INTO PRODUIT (RefProduit, shortLibel,longLibel,prxHT,idCat) VALUES 
+	(100 ,'Baguette rouge', 'manche en bois d'accacia, son coeur de chêne permet de viser les plus hauts pouvoir, bonne prise en main',95.23,3),
+	(103,'Chat roux','sage et prêt à metamorphoser ce petit chat roux pourras vous accompagner durant votre année a poudlard',150,12),
+	(104,'Chat gris','Ce petit chat espiègle et malin saura vous accompagner dans vos cours tout autant qu'il vous fera tourner en bourique ! ', 148.99,12),
+	(105,'Robe de Serdaigle','Robe de la maison Serdaigle, son fil à tisser magique vous assurera les premieres pages du Sorier bien Fringué', 57.12,7),
+	(106 ,'Robe de maison','robe de maison basique noire en fil de jobarbille, peut se décliner selon la maison de son possesseur',15.99,7),
+	(107 ,'gants de quidditch','gants de Quidditch renforcés en peau de dragon',7.53,9),
+	(108 ,'rat blanc','ce petit accolyte vous permettra de suivre vos cours de methamorphose convenablement',42,14),
+	(109 ,'Chouette brune','parfaite pour les longs courriers cette chouette vous permettra de garder le contact avec vos proche',78.99,11),
+	(110 ,'Lunettes ronde','Lunettes rondes pour un style sans erreurs',10.99,10),
+	(111 ,'Chouette blanche','rapide et discrète, cette chouette vous assurera une correspondance fiable et rapide',105.99,11),
+	(112 ,'Baguette accacia','Baguette en bois d'accacia avec coeur de dragon et plume de phoenix',189,99,4),
+	(113 ,'Baguette beige','cette baguette vous permettra de maitriser les sorts de soins, avec sn coeur en plume de phoenix',255,4),
+	(114 ,'Crapeaux chanteur','parfait pour un soliste ou un eleve du coeur des grenouilles, crapeau accordé en fa mineur',99.99,13),
+	(115,'Baguette blanche','Avec son coeur en crin de licorne, cette baguette vous accordera un pouvoir lumineux',187,99,5);
+	
+	
+	
+ INSERT INTO FOURNISSEUR (RefFournisseur, nomination) VALUES 
+	(1 ,'Ollivander'),
+	(3,'Gaichiffon'),
+	(4,'Animaux et Crin de cheval'),
+	(5,'HoneyDuck')
+	
+	
+	INSERT INTO `ADRESSE` (`IdAdresse`, `nominationAdresse`, `adresse`, `ville`, `pays`, `cp`, `actif`) VALUES (NULL, 'maison', '7 Rue de Pre au lard', 'pre au lard', 'france', '25142', '1'), (NULL, 'livraison', 'Rue Victor Krum', 'QuidditchCity', 'france', '29874', '1'), (NULL, 'maison', 'rue du normandy', 'alliance', 'france', '98547', '1'), (NULL, 'maison', 'rue du petit bout', 'auBout', 'france', '10245', '1'), (NULL, 'maison', 'avenue des turien', 'turienville', 'bruxelle', '35879', '0'), (NULL, 'maison', 'jesaispasquoi', 'jesaispasou', 'france', '32547', '1'), (NULL, 'livraison', 'serdaigle dormitary', 'poudlard', 'france', '78546', '1'), (NULL, 'facturation', 'rue du paradis', 'elliseum', 'france', '65874', '1');
+	
+	
+	INSERT INTO `HABITE` (`idClient`, `IdAdresse`) VALUES ('4', '1'), ('2', '3'), ('4', '2'), ('1', '6'), ('5', '8'), ('5', '5'), ('1', '4'), ('3', '6');
+```
+
+## Dump de la base ligne : 
+
+``` mysqldump -u utilisateur -pmot_de_passe filRouge > filRouge.sql ```
