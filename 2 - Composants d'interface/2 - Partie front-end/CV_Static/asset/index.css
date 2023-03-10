@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
+
+
+element {
+    --lightPink: #c29675;
+    --fadePink : #f8f9f0;
+    --mediumPink : #966951;
+    --darkPink : #5d4536;
+  }
+  
+
+.container {
+   margin: 0;
+   padding: 0;
+   max-width: 100% ;
+   font-family: 'Montserrat', sans-serif;
+}
+
+.leftSide{
+    background-color: #c29675 !important;
+    padding-bottom: 20rem;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.bgPalePink{
+    background-color: #f8f9f0 !important;
+
+}
+
+.border-white{
+    border-width: 0.7rem !important;
+    left: 30%;
+    padding: 0;
+    margin-top: 2%;
+    margin-bottom: 2%;
+
+}
+
+.display-5{
+    color: #966951;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+}
+.display-4{
+    font-weight: 100;
+    font-size: 24px;
+    letter-spacing: 10px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.display-2{
+    font-weight: 800;
+    font-family: 'Montserrat', sans-serif;
+}
+.color-MediumPink{
+    color: #966951;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+}
+.color-lightPink{
+    color: #c29675;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+}; 
+
+
