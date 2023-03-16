@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+
+:root{
+    --darkBrown : #3e2723;
+    --Brown: #b9a488;  
+    --mediumBrown : #c0b097;
+    --sand : #f6d9c7;
+    --lightSand : #e4d4c4;
+    --darkGrey : #2f2d2e;
+    --darkerGrey : #1a191a;
+    --ardoise:#2c2d2f;
+    --lightGrey : #d2d2d2;
+}
+
+body{
+    color: var(--darkBrown);
+    overflow: hidden;
+}
+
+.container{
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    max-width: 100% !important;
+    background-color: var(--mediumBrown);
+
+}
+.panel{
+    background-color: var(--ardoise);
+    color: rgb(185, 185, 185);
+    padding-top: 0.5% !important;
+    padding-bottom: 0.5% !important;
+    box-shadow: 0px 9px 18px -1px rgba(0,0,0,0.26);
+    box-sizing: content-box !important;
+
+}
+
+.textToSlide{
+    animation: animate 30s linear infinite;
+    animation-delay: -10s;
+    box-sizing: content-box !important;
+}
+
+.boxingMove div:nth-child(2) {
+    animation: animate2 30s linear infinite;
+    animation-delay: -50s;
+    padding-top: -20% !important;
+  }
+
+@keyframes animate {
+    0% {
+      transform: translateX(200%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  @keyframes animate2 {
+    0% {
+      transform: translateX(250%);
+    }
+    100% {
+      transform: translateX(-200%);
+    }
+  }
+
+  
+
+.iconMaker{
+    width: 32px;
+    height: 32px ;
+}
