@@ -1,4 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Londrina+Shadow&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Megrim&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alumni+Sans+Collegiate+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Licorice&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Old+Standard+TT&display=swap');
 
 :root{
     --darkBrown : #3e2723;
@@ -14,7 +19,9 @@
 
 body{
     color: var(--darkBrown);
-    overflow: hidden;
+    overflow: hidden; 
+    font-family: 'Megrim', cursive;
+    font-weight: 900;
 }
 
 .container{
@@ -22,6 +29,7 @@ body{
     margin-right: 0 !important;
     max-width: 100% !important;
     background-color: var(--mediumBrown);
+
 
 }
 .panel{
@@ -31,7 +39,10 @@ body{
     padding-bottom: 0.5% !important;
     box-shadow: 0px 9px 18px -1px rgba(0,0,0,0.26);
     box-sizing: content-box !important;
+    font-family: 'Old Standard TT', serif;
 
+
+  
 }
 
 .textToSlide{
@@ -39,12 +50,30 @@ body{
     animation-delay: -10s;
     box-sizing: content-box !important;
 }
-
+.boxingMove{
+  position: relative !important;
+}
 .boxingMove div:nth-child(2) {
     animation: animate2 30s linear infinite;
     animation-delay: -50s;
     padding-top: -20% !important;
+    position: absolute !important;
+    top: 0;
   }
+
+
+@media screen and (max-width: 915px) {
+
+  .boxingMove div:nth-child(2) {
+    min-width: 150% !important;
+  }
+  .textToSlide{
+    min-width: 150% !important;
+  }
+  html{
+    overflow: hidden;
+  }
+}
 
 @keyframes animate {
     0% {
@@ -68,4 +97,33 @@ body{
 .iconMaker{
     width: 32px;
     height: 32px ;
+}
+
+.display-1{
+ font-family: 'Alumni Sans Collegiate One', sans-serif;
+  font-size: 150px;
+  padding-top: 8%;
+ color: transparent;
+  font-size:126px;
+  background: url("../medias/WithyStars.png") repeat;
+  background-position: 40% 50%;
+  -webkit-background-clip: text;
+}
+
+.subtitle{
+  font-family: 'Licorice', cursive;
+ padding-left: 6%;
+  font-size: 180px;
+  font-size: 28px;
+  margin-top: -51px !important;
+}
+
+
+@media screen and (max-width: 1020px) {
+  .display-1{
+    display: none;
+  }
+  .subtitle{
+display: none;
+  }
 }
