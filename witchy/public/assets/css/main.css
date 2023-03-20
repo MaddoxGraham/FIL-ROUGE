@@ -102,7 +102,7 @@ body{
 .display-1{
  font-family: 'Alumni Sans Collegiate One', sans-serif;
   font-size: 150px;
-  padding-top: 8%;
+  padding-top: 4%;
  color: transparent;
   font-size:126px;
   background: url("../medias/WithyStars.png") repeat;
@@ -126,4 +126,10 @@ body{
   .subtitle{
 display: none;
   }
+}
+
+
+
+.demoHome{
+  background-color: var(--ardoise) !important;
 }
