@@ -1,8 +1,306 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-{% include "_partials/_head.html.twig" %}
+	{% include "_partials/_head.html.twig" %}
 
-{% include "catalogue/homepage.html.twig" %}
+	<div class="container  indexDemo">
 
+		<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="true">
+			<div class="carousel-indicators">
+				<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+				<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+				<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+			</div>
+			<div class="carousel-inner">
+				<div class="carousel-item active">
+
+					<div class="card bg-dark text-white">
+						<div>
+							<img class="card-img opacity-50" src="assets/medias/FlowerGoth.jpeg" alt="Card image">
+						</div>
+						<div class="card-img-overlay mx-auto flex-column text-center d-flex">
+
+							<div class="card-title mb-5 pb-5 font-serif display-2">
+								<span class="font-handwritten">
+									Get myself the
+								</span>
+								<span class="LargeFont">Addams
+								</span>
+								's vibe
+							</div>
+
+							<div class="card-text my-auto">
+								<p class="card-text">Discover the new collection</p>
+
+								<div class="container text-center">
+									<div class="row justify-content-between">
+										<div class="col-md-4 demoBox">
+											<a href="">
+												<img class="img-fluid" src="assets/medias/addamsvibe1.png" alt=""></a>
+										</div>
+										<div class="col-md-4 demoBox">
+											<a href="">
+												<img class="img-fluid" src="assets/medias/addamsvibe2.png" alt=""></a>
+										</div>
+										<div class="col-md-4 demoBox">
+											<a href="">
+												<img class="img-fluid" src="assets/medias/addamsvibe3.png" alt="">
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<button type="button" class="btn text-center mt-auto mb-3 btn-light">
+								<p class="card-text">See More</p>
+							</button>
+
+						</div>
+					</div>
+
+				</div>
+
+				<div class="carousel-item">
+
+					<div class="card bg-dark text-white">
+						<div>
+							<img class="card-img opacity-50" src="https://images.pexels.com/photos/10675950/pexels-photo-10675950.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Card image">
+						</div>
+						<div class="card-img-overlay mx-auto flex-column text-center d-flex">
+
+
+							<div class="card-title font-serif display-2">
+								<span class="font-handwritten">
+									Punk is</span>
+								my
+								<span class="LargeFont">new Shit</span>
+							</div>
+							<div class="card-text my-auto">
+
+								<p class="card-text">Get the style now
+								</p>
+
+
+								<div class="container text-center">
+									<div class="row justify-content-between">
+										<div class="col-md-4 demoBox">
+											<a href="">
+												<img class="img-fluid" src="https://i.pinimg.com/564x/40/e2/b4/40e2b44fe493814817f826631465ca79.jpg" alt=""></a>
+										</div>
+										<div class="col-md-4 demoBox">
+											<a href="">
+												<img class="img-fluid" src="https://i.pinimg.com/564x/83/b9/55/83b955fe8da63ca576a95317248e6628.jpg" alt=""></a>
+										</div>
+										<div class="col-md-4 demoBox">
+											<a href="">
+												<img class="img-fluid" src="https://i.pinimg.com/564x/db/2f/bb/db2fbb282ae807165ebc8d94f816e1c8.jpg" alt="">
+											</a>
+										</div>
+									</div>
+								</div>
+
+							</div>
+							<button type="button" class="btn text-center mt-auto mb-3 btn-light">
+								<p class="card-text">See More
+								</p>
+							</button>
+
+
+						</div>
+					</div>
+				</div>
+
+
+				<div class="carousel-item">
+
+					<div class="card bg-dark text-white">
+
+						<img class="card-img opacity-50" src="https://images.pexels.com/photos/15792494/pexels-photo-15792494.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Card image">
+
+						<div class="card-img-overlay mx-auto flex-column text-center d-flex">
+							<div class="card-title font-serif display-2">
+								<span class="LargeFont">
+									Dark
+								</span>
+								is
+								<span class="font-handwritten">
+									my bright side
+								</span>
+							</div>
+
+							<div class="card-text my-auto">
+								<p class="card-text">Get the style now
+								</p>
+								<div class="container text-center">
+									<div class="row justify-content-between">
+										<div class="col-md-4 demoBox">
+											<a href="">
+												<img class="img-fluid" src="https://i.pinimg.com/564x/40/f4/5d/40f45d1f67dbd43a3ad02e6e3b50d71b.jpg" alt=""></a>
+										</div>
+										<div class="col-md-4 demoBox">
+											<a href="">
+												<img class="img-fluid" src="https://i.pinimg.com/736x/fb/26/63/fb2663ca9539544c8a132666e3b4ccbe.jpg" alt=""></a>
+										</div>
+										<div class="col-md-4 demoBox">
+											<a href="">
+												<img class="img-fluid" src="https://i.pinimg.com/736x/d2/09/9e/d2099e104d6eae6bc48074dcc662920c.jpg" alt="">
+											</a>
+										</div>
+									</div>
+								</div>
+
+							</div>
+							<button type="button" class="btn text-center mt-auto mb-3 btn-light">
+								<p class="card-text">See More
+								</p>
+							</button>
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+			<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">Previous</span>
+			</button>
+			<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+				<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">Next</span>
+			</button>
+		</div>
+
+	</div>
+</div>
+
+<div class="container bestSeller">
+	<div class="row">
+		<h2 class="mb-5">
+			OUR BEST-SELLER</h2>
+	</div>
+
+	<div class="row">
+
+		<div class="col-lg-4 mb-5  col-md-12">
+			<div class="card">
+				<div class="parentRelatif">
+					<a href="http://">
+						<img src="https://img.ltwebstatic.com/images3_pi/2022/10/18/1666062772a8652467ad2ebfa7fd41879694c2ac3b_thumbnail_600x.webp" class="card-img-top" alt="..."></a>
+					<button type="button" class="card-text LargeFont">Add to cauldron</button>
+				</div>
+				<div class="card-body">
+					<div class="font-serif">
+						Academia Dark Academia Robe en tartan à bouton
+					</div>
+					<div>
+						57.99€
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-lg-4  mb-5 col-md-6">
+			<div class="card">
+				<div class="parentRelatif">
+					<a href="http://">
+						<img src="https://cdn.shopify.com/s/files/1/0539/0722/6789/products/Elemental-Cats-Air-Plush-Toy-G_500x.jpg?v=1677587307" class="card-img-top" alt="..."></a>
+					<button type="button" class="card-text LargeFont">Add to cauldron</button>
+				</div>
+				<div class="card-body">
+					<div class="font-serif">
+						Element Cats: Air Plush Toy
+					</div>
+					<div>
+						39,95€
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="col-lg-4  mb-5 col-md-6">
+			<div class="card ">
+				<div class="parentRelatif">
+					<a href="http://">
+						<img src="https://cdn.shopify.com/s/files/1/0539/0722/6789/products/PANIC-PLATFORM-SHOE-W-B_500x.jpg?v=1677236048 " class="card-img-top" alt="..."></a>
+					<button type="button" class="card-text LargeFont">Add to cauldron</button>
+				</div>
+				<div class="card-body">
+					<div class="font-serif">
+						Panic Plateform shoes
+					</div>
+					<div>
+						129,95€
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+
+</div>
+
+
+<div class="container ParallaxBox">
+	<div class="row parallax">
+		<div class="col-12"></div>
+	</div>
+
+	<div class="row upstanded">
+		<div class="blank">
+			<form action="" method="post">
+				<label class="form-label font-handwritten" for="contact">
+					Don't be a stranger
+				</label>
+				<input type="email" class="form-control" name="contact" id="">
+				<div id="emailHelp" class="text-end text-light form-text">sign up to our newsletter</div>
+			</form>
+
+		</div>
+		<div class="container demoStyle  pt-3 bg-dark text-light">
+			<span class="font-serif ">Join us in<span class="LargeFont" style="font-size : 32px">
+					the Electrical</span>
+				<span class="font-handwritten">
+					Black Sabbath</span>
+			</span>
+			<div class="row"><img class="img-fluid" src="https://i.pinimg.com/564x/f1/7d/28/f17d28da2129205da9b23870fcf7ed67.jpg" alt=""></div>
+
+		<button class="px-app px-glitch">
+  <span class="px-glitchtext px-glitchtext-anim">Glitch</span>
+</button>
+
+
+		</div>
+	</div>
+
+
+</div>
+
+
+<footer class="container">
+	<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+		<div class="col-md-4 d-flex align-items-center">
+			<a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+				<svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
+			</a>
+			<span class="mb-3 mb-md-0 text-muted">&copy; 2022 Company, Inc</span>
+		</div>
+		<ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+			<li class="ms-3">
+				<a class="text-muted" href="#">
+					<svg class="bi" width="24" height="24"><use xlink:href="#twitter"/></svg>
+				</a>
+			</li>
+			<li class="ms-3">
+				<a class="text-muted" href="#">
+					<svg class="bi" width="24" height="24"><use xlink:href="#instagram"/></svg>
+				</a>
+			</li>
+			<li class="ms-3">
+				<a class="text-muted" href="#">
+					<svg class="bi" width="24" height="24"><use xlink:href="#facebook"/></svg>
+				</a>
+			</li>
+		</ul>
+	</footer>
 {% endblock %}
