@@ -201,8 +201,22 @@ button {
 }
 
 
-.undernav{
+.majorClass{
+font-weight: bolder;
+font-size: 24px;
+}
 
+.fa-caret-down{
+  font-size: 32px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.subClass{
+  font-size: 15px;
+}
+
+.underHidden{
+  display: none;
 }
 /** NAVBAR CONTENT  **/ 
 
@@ -435,4 +449,55 @@ border-color: transparent transparent var(--ardoise) ;
     filter: drop-shadow(2px 0 0 rgba(255, 0, 255, 1))
       drop-shadow(-2px 0 0 rgba(0, 255, 255, 1));
   }
+}
+
+
+/***************************** BREAKPOINT ****************************/
+
+
+
+@media screen and (min-width: 915px) {
+
+.navBoxBurger{
+  display: none;
+}
+.contentNav{
+  position: inherit;
+}
+.Logo{
+  max-width: 50%;
+}
+.collapse:not(.show){
+  display: block !important;
+}
+
+.flexNav{
+flex-direction: row !important;
+justify-content: space-evenly !important;
+}
+.majorClass{
+  border-bottom: none !important;
+}
+.flexNav>div>li {
+  font-size: 24px;
+  margin-top: auto;
+  margin-bottom: auto;
+  padding: 0 !important;
+  width: auto !important;
+  border-bottom:unset !important;
+}
+.flexNav>div>li>i{
+  display: none;
+}
+
+.underNav{
+  display: block;
+}
+.underHidden:hover{
+  display: block !important;
+  width: 100% !important;
+  position: absolute !important;
+}
+
+
 }

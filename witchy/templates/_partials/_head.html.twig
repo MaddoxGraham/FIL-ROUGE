@@ -18,7 +18,7 @@
 	<!-- Boite A : Burger start -->
 
 
-	<div class="my-auto">
+	<div class="my-auto navBoxBurger">
 
 
 		<nav class="navbar  navbar-default  ">
@@ -54,8 +54,14 @@
 
 	<!-- Boite c : ICONS start -->
 	<div class="my-auto d-flex flex-nowrap">
-<button type="button" class="bg-Brown "> <div class="col-md-6 iconMaker "><img src="assets/medias/cauldron.webp" class="img-fluid" alt="votre chaudron"> </div> </button>
-<button type="button" class="bg-Brown "> <div class="col-md-6 iconMaker"><img src="assets/medias/profil.webp" class="img-fluid" alt="votre panier"> </div></button>
+		<button type="button" class="bg-Brown ">
+			<div class="col-md-6 iconMaker "><img src="assets/medias/cauldron.webp" class="img-fluid" alt="votre chaudron">
+			</div>
+		</button>
+		<button type="button" class="bg-Brown ">
+			<div class="col-md-6 iconMaker"><img src="assets/medias/profil.webp" class="img-fluid" alt="votre panier">
+			</div>
+		</button>
 
 
 	</div>
@@ -65,72 +71,281 @@
 
 <container class="contentNav ">
 
-				<div class="collapse p-3 bg-Ardoise txt-LightGrey navbar-collapse" id="navbarNav">
-        <span class="triangle">
-        </span>
-					<ul class="navbar-nav">
+	<div class="collapse p-3 bg-Ardoise txt-LightGrey navbar-collapse" id="navbarNav">
+		<span class="triangle"></span>
 
-						<li class="nav-item border-bottom border-light pb-2">
-							<a class="nav-link active" aria-current="page" href="#">New</a>
+		<ul class="navbar-nav flexNav">
+			<div>
+				<li class="nav-item border-bottom border-light pb-2 d-flex justify-content-between majorClass ">
+					<a class="nav-link active" aria-current="page" href="#">New</a>
+					<i class="fa-sharp fa-solid fa-caret-down"></i>
+				</li>
+				<ul class="navbar-nav undernav underHidden">
+					<li class="nav-item border-light">
+						<a class="nav-link active subClass" aria-current="page" href="#">
+							What's new ?
+						</a>
+					</li>
+					<li class="nav-item border-light">
+						<a class="nav-link active subClass" aria-current="page" href="#">
+							Back in stock
+						</a>
+					</li>
 
-							<ul class="navbar-nav undernav">
-
-							<li class="nav-item border-light" >
-							<a class="nav-link active" aria-current="page" href="#"> Dress </a>
-							</li>
-
-							<li class="nav-item border-light" >
-							<a class="nav-link active" aria-current="page" href="#"> Top </a>
-							</li>
-
-														<li class="nav-item border-light " >
-							<a class="nav-link active" aria-current="page" href="#"> Bottom </a>
-							</li>
-
-							</ul>
-
-						</li>
+					<li class="nav-item border-light ">
+						<a class="nav-link active subClass" aria-current="page" href="#">
+							current obssession
+						</a>
+					</li>
+				</div>
 
 
-						<li class="nav-item border-bottom border-light pt-2 pb-2">
-							<a class="nav-link" href="#">Women</a>
-														<ul class="navbar-nav undernav">
+				<div>
+					<li class="nav-item border-bottom border-light pt-2 pb-2 d-flex justify-content-between majorClass">
+						<a class="nav-link " href="#">Women</a>
+						<i class="fa-sharp fa-solid fa-caret-down"></i>
+					</li>
+					<ul class="navbar-nav undernav underHidden">
 
-							<li class="nav-item border-light" >
-							<a class="nav-link active" aria-current="page" href="#"> Dress </a>
-							</li>
-
-							<li class="nav-item border-light" >
-							<a class="nav-link active" aria-current="page" href="#"> Top </a>
-							</li>
-
-														<li class="nav-item border-light " >
-							<a class="nav-link active" aria-current="page" href="#"> Bottom </a>
-							</li>
-
-							</ul>
-
-						</li>
-						<li class="nav-item border-bottom border-light pt-2 pb-2">
-							<a class="nav-link" href="#">Men</a>
-						</li>
-						<li class="nav-item border-bottom border-light pt-2 pb-2">
-							<a class="nav-link" href="#">Shoes
+						<li class="nav-item border-light">
+							<a class="nav-link active subClass" aria-current="page" href="#">
+								Dress
 							</a>
 						</li>
-						<li class="nav-item border-bottom border-light pt-2 pb-2">
-							<a class="nav-link" href="#">Accessories</a>
+
+						<li class="nav-item border-light">
+							<a class="nav-link active subClass" aria-current="page" href="#">
+								Top
+							</a>
 						</li>
-						<li class="nav-item border-bottom border-light pt-2 pb-2">
-							<a class="nav-link" href="#">Home</a>
+
+						<li class="nav-item border-light ">
+							<a class="nav-link active subClass" aria-current="page" href="#">
+								Bottom
+							</a>
 						</li>
-						<li class="nav-item border-bottom border-light pt-2 pb-2">
-							<a class="nav-link" href="#">Beauty</a>
+						<li class="nav-item border-light ">
+							<a class="nav-link active subClass" aria-current="page" href="#">
+								Outwear
+							</a>
 						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#">Clearance</a>
+
+						<li class="nav-item border-light ">
+							<a class="nav-link active subClass" aria-current="page" href="#">
+								All women clothing
+							</a>
 						</li>
 					</ul>
 				</div>
 
-</container>
+				<div>
+					<li class="nav-item border-bottom border-light pt-2 pb-2 d-flex justify-content-between majorClass">
+						<a class="nav-link " href="#">Men</a>
+						<i class="fa-sharp fa-solid fa-caret-down"></i>
+					</li>
+					<ul class="navbar-nav undernav underHidden">
+
+						<li class="nav-item border-light">
+							<a class="nav-link active subClass" aria-current="page" href="#">
+								Dress
+							</a>
+						</li>
+
+						<li class="nav-item border-light">
+							<a class="nav-link active subClass" aria-current="page" href="#">
+								Top
+							</a>
+						</li>
+
+						<li class="nav-item border-light ">
+							<a class="nav-link active subClass" aria-current="page" href="#">
+								Bottom
+							</a>
+						</li>
+						<li class="nav-item border-light ">
+							<a class="nav-link active subClass" aria-current="page" href="#">
+								Outwear
+							</a>
+						</li>
+
+						<li class="nav-item border-light ">
+							<a class="nav-link active subClass" aria-current="page" href="#">
+								All men clothing
+							</a>
+						</li>
+
+
+					</ul>
+			</div>
+			<div>
+
+				<li class="nav-item border-bottom border-light pt-2 pb-2 d-flex justify-content-between majorClass">
+					<a class="nav-link  " href="#">Shoes</a>
+					<i class="fa-sharp fa-solid fa-caret-down"></i>
+				</li>
+				<ul class="navbar-nav undernav underHidden">
+
+					<li class="nav-item border-light">
+						<a class="nav-link active subClass" aria-current="page" href="#">
+							Boots
+						</a>
+					</li>
+
+					<li class="nav-item border-light">
+						<a class="nav-link active subClass" aria-current="page" href="#">
+							Plateforms
+						</a>
+					</li>
+
+					<li class="nav-item border-light ">
+						<a class="nav-link active subClass" aria-current="page" href="#">
+							Heels
+						</a>
+					</li>
+					<li class="nav-item border-light ">
+						<a class="nav-link active subClass" aria-current="page" href="#">
+							Flat
+						</a>
+					</li>
+					<li class="nav-item border-light ">
+						<a class="nav-link active subClass" aria-current="page" href="#">
+							All footwear
+						</a>
+					</li>
+
+
+				</ul>
+			</li>
+		</div>
+		<div>
+
+			<li class="nav-item border-bottom border-light pt-2 pb-2 d-flex justify-content-between majorClass">
+				<a class="nav-link  " href="#">Accessories</a>
+				<i class="fa-sharp fa-solid fa-caret-down"></i>
+			</li>
+			<ul class="navbar-nav undernav underHidden">
+
+				<li class="nav-item border-light">
+					<a class="nav-link active subClass" aria-current="page" href="#">
+						Jewellery
+					</a>
+				</li>
+
+				<li class="nav-item border-light">
+					<a class="nav-link active subClass" aria-current="page" href="#">
+						Bags
+					</a>
+				</li>
+
+				<li class="nav-item border-light ">
+					<a class="nav-link active subClass" aria-current="page" href="#">
+						Belts & Harnesses
+					</a>
+				</li>
+				<li class="nav-item border-light ">
+					<a class="nav-link active subClass" aria-current="page" href="#">
+						Socks
+					</a>
+				</li>
+				<li class="nav-item border-light ">
+					<a class="nav-link active subClass" aria-current="page" href="#">
+						Sunglasses
+					</a>
+				</li>
+				<li class="nav-item border-light ">
+					<a class="nav-link active subClass" aria-current="page" href="#">
+						Hair Accessories
+					</a>
+				</li>
+				<li class="nav-item border-light ">
+					<a class="nav-link active subClass" aria-current="page" href="#">
+						Hat & Headbands
+					</a>
+				</li>
+
+
+				<li class="nav-item border-light ">
+					<a class="nav-link active subClass" aria-current="page" href="#">
+						All Accessories
+					</a>
+				</li>
+			</ul>
+		</li>
+	</div>
+	<div>
+
+
+		<li class="nav-item border-bottom border-light pt-2 pb-2 d-flex justify-content-between majorClass">
+			<a class="nav-link " href="#">Home</a>
+			<i class="fa-sharp fa-solid fa-caret-down"></i>
+		</li>
+		<ul class="navbar-nav undernav underHidden">
+
+			<li class="nav-item border-light">
+				<a class="nav-link active subClass" aria-current="page" href="#">
+					Bedding & Cushions
+				</a>
+			</li>
+
+			<li class="nav-item border-light">
+				<a class="nav-link active subClass" aria-current="page" href="#">
+					Rugs
+				</a>
+			</li>
+
+			<li class="nav-item border-light ">
+				<a class="nav-link active subClass" aria-current="page" href="#">
+					Candles & scent
+				</a>
+			</li>
+			<li class="nav-item border-light ">
+				<a class="nav-link active subClass" aria-current="page" href="#">
+					Mirror
+				</a>
+			</li>
+			<li class="nav-item border-light ">
+				<a class="nav-link active subClass" aria-current="page" href="#">
+					Pets
+				</a>
+			</li>
+			<li class="nav-item border-light ">
+				<a class="nav-link active subClass" aria-current="page" href="#">
+					Baking
+				</a>
+			</li>
+			<li class="nav-item border-light ">
+				<a class="nav-link active subClass" aria-current="page" href="#">
+					Tableweare
+				</a>
+			</li>
+			<li class="nav-item border-light ">
+				<a class="nav-link active subClass" aria-current="page" href="#">
+					shower curtains
+				</a>
+			</li>
+			<li class="nav-item border-light ">
+				<a class="nav-link active subClass" aria-current="page" href="#">
+					towel & mats
+				</a>
+			</li>
+			<li class="nav-item border-light ">
+				<a class="nav-link active subClass" aria-current="page" href="#">
+					Gift card
+				</a>
+			</li>
+
+			<li class="nav-item border-light ">
+				<a class="nav-link active subClass" aria-current="page" href="#">
+					All Home
+				</a>
+			</li>
+		</ul>
+	</div>
+
+	<div>
+
+		<li class="nav-item">
+			<a class="nav-link mx-auto" href="#">Clearance</a>
+		</li>
+	</div>
+</ul></div></container>
