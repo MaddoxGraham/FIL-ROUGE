@@ -25,6 +25,7 @@ for (let index = 0; index < catBtn.length; index++) {
 
         }
     })
-
 }
+
+
 
