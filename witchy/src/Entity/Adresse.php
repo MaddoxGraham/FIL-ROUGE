@@ -2,11 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\AdressesRepository;
+use App\Repository\AdresseRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: AdressesRepository::class)]
-class Adresses
+#[ORM\Entity(repositoryClass: AdresseRepository::class)]
+class Adresse
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -22,11 +22,15 @@ class Adresses
     #[ORM\Column(length: 255)]
     private ?string $ville = null;
 
-    #[ORM\Column(length: 10)]
+    #[ORM\Column(length: 5)]
     private ?string $cp = null;
 
     #[ORM\Column]
     private ?bool $actif = null;
+
+    #[ORM\ManyToOne(inversedBy: 'adresses')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Client $idClient = null;
 
     public function getId(): ?int
     {
@@ -89,6 +93,18 @@ class Adresses
     public function setActif(bool $actif): self
     {
         $this->actif = $actif;
+
+        return $this;
+    }
+
+    public function getIdClient(): ?Client
+    {
+        return $this->idClient;
+    }
+
+    public function setIdClient(?Client $idClient): self
+    {
+        $this->idClient = $idClient;
 
         return $this;
     }

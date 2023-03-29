@@ -2,27 +2,27 @@
 
 namespace App\Entity;
 
-use App\Repository\PhotosRepository;
+use App\Repository\PhotoRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: PhotosRepository::class)]
-class Photos
+#[ORM\Entity(repositoryClass: PhotoRepository::class)]
+class Photo
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    #[ORM\Column(type: Types::TEXT)]
     private ?string $src = null;
 
     #[ORM\Column]
-    private ?bool $majorPicture = null;
+    private ?bool $isprimary = null;
 
-    #[ORM\ManyToOne]
+    #[ORM\ManyToOne(inversedBy: 'photos')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Produits $RefProduit = null;
+    private ?Produit $RefProduit = null;
 
     public function getId(): ?int
     {
@@ -34,31 +34,31 @@ class Photos
         return $this->src;
     }
 
-    public function setSrc(?string $src): self
+    public function setSrc(string $src): self
     {
         $this->src = $src;
 
         return $this;
     }
 
-    public function isMajorPicture(): ?bool
+    public function isIsprimary(): ?bool
     {
-        return $this->majorPicture;
+        return $this->isprimary;
     }
 
-    public function setMajorPicture(bool $majorPicture): self
+    public function setIsprimary(bool $isprimary): self
     {
-        $this->majorPicture = $majorPicture;
+        $this->isprimary = $isprimary;
 
         return $this;
     }
 
-    public function getRefProduit(): ?Produits
+    public function getRefProduit(): ?Produit
     {
         return $this->RefProduit;
     }
 
-    public function setRefProduit(?Produits $RefProduit): self
+    public function setRefProduit(?Produit $RefProduit): self
     {
         $this->RefProduit = $RefProduit;
 

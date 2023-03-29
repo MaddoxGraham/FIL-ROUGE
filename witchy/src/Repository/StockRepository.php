@@ -2,26 +2,26 @@
 
 namespace App\Repository;
 
-use App\Entity\Stocker;
+use App\Entity\Stock;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Stocker>
+ * @extends ServiceEntityRepository<Stock>
  *
- * @method Stocker|null find($id, $lockMode = null, $lockVersion = null)
- * @method Stocker|null findOneBy(array $criteria, array $orderBy = null)
- * @method Stocker[]    findAll()
- * @method Stocker[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Stock|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Stock|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Stock[]    findAll()
+ * @method Stock[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class StockerRepository extends ServiceEntityRepository
+class StockRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Stocker::class);
+        parent::__construct($registry, Stock::class);
     }
 
-    public function save(Stocker $entity, bool $flush = false): void
+    public function save(Stock $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,7 +30,7 @@ class StockerRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(Stocker $entity, bool $flush = false): void
+    public function remove(Stock $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -40,7 +40,7 @@ class StockerRepository extends ServiceEntityRepository
     }
 
 //    /**
-//     * @return Stocker[] Returns an array of Stocker objects
+//     * @return Stock[] Returns an array of Stock objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -54,7 +54,7 @@ class StockerRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Stocker
+//    public function findOneBySomeField($value): ?Stock
 //    {
 //        return $this->createQueryBuilder('s')
 //            ->andWhere('s.exampleField = :val')

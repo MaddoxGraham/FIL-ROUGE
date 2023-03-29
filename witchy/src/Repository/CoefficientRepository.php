@@ -2,26 +2,26 @@
 
 namespace App\Repository;
 
-use App\Entity\Coefficients;
+use App\Entity\Coefficient;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Coefficients>
+ * @extends ServiceEntityRepository<Coefficient>
  *
- * @method Coefficients|null find($id, $lockMode = null, $lockVersion = null)
- * @method Coefficients|null findOneBy(array $criteria, array $orderBy = null)
- * @method Coefficients[]    findAll()
- * @method Coefficients[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Coefficient|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Coefficient|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Coefficient[]    findAll()
+ * @method Coefficient[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class CoefficientsRepository extends ServiceEntityRepository
+class CoefficientRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Coefficients::class);
+        parent::__construct($registry, Coefficient::class);
     }
 
-    public function save(Coefficients $entity, bool $flush = false): void
+    public function save(Coefficient $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,7 +30,7 @@ class CoefficientsRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(Coefficients $entity, bool $flush = false): void
+    public function remove(Coefficient $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -40,7 +40,7 @@ class CoefficientsRepository extends ServiceEntityRepository
     }
 
 //    /**
-//     * @return Coefficients[] Returns an array of Coefficients objects
+//     * @return Coefficient[] Returns an array of Coefficient objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -54,7 +54,7 @@ class CoefficientsRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Coefficients
+//    public function findOneBySomeField($value): ?Coefficient
 //    {
 //        return $this->createQueryBuilder('c')
 //            ->andWhere('c.exampleField = :val')

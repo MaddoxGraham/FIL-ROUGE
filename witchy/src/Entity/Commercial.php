@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\CommerciauxRepository;
+use App\Repository\CommercialRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: CommerciauxRepository::class)]
-class Commerciaux
+#[ORM\Entity(repositoryClass: CommercialRepository::class)]
+class Commercial
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -22,9 +22,9 @@ class Commerciaux
     private ?string $prenom = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $specificite = null;
+    private ?string $specialisation = null;
 
-    #[ORM\OneToMany(mappedBy: 'idCommercial', targetEntity: Clients::class)]
+    #[ORM\OneToMany(mappedBy: 'idCommercial', targetEntity: Client::class)]
     private Collection $clients;
 
     public function __construct()
@@ -61,27 +61,27 @@ class Commerciaux
         return $this;
     }
 
-    public function getSpecificite(): ?string
+    public function getSpecialisation(): ?string
     {
-        return $this->specificite;
+        return $this->specialisation;
     }
 
-    public function setSpecificite(string $specificite): self
+    public function setSpecialisation(string $specialisation): self
     {
-        $this->specificite = $specificite;
+        $this->specialisation = $specialisation;
 
         return $this;
     }
 
     /**
-     * @return Collection<int, Clients>
+     * @return Collection<int, Client>
      */
     public function getClients(): Collection
     {
         return $this->clients;
     }
 
-    public function addClient(Clients $client): self
+    public function addClient(Client $client): self
     {
         if (!$this->clients->contains($client)) {
             $this->clients->add($client);
@@ -91,7 +91,7 @@ class Commerciaux
         return $this;
     }
 
-    public function removeClient(Clients $client): self
+    public function removeClient(Client $client): self
     {
         if ($this->clients->removeElement($client)) {
             // set the owning side to null (unless already changed)
