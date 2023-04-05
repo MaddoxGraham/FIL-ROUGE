@@ -63,4 +63,14 @@ class CoefficientRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+
+   public function findOneBySomeNomination($value): ?Coefficient
+   {
+       return $this->createQueryBuilder('c')
+           ->andWhere('c.nomination = :val')
+           ->setParameter('val', $value)
+           ->getQuery()
+           ->getOneOrNullResult()
+       ;
+   }
 }

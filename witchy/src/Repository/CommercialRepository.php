@@ -54,13 +54,23 @@ class CommercialRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Commercial
-//    {
-//        return $this->createQueryBuilder('c')
-//            ->andWhere('c.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+
+// public function findOneBySomeField($value): ?Commercial
+// {
+//     return $this->createQueryBuilder('c')
+//         ->andWhere('c.exampleField = :val')
+//         ->setParameter('val', $value)
+//         ->getQuery()
+//         ->getOneOrNullResult()
+//     ;
+// }
+   public function findOneBySpecialisation($value): ?Commercial
+   {
+       return $this->createQueryBuilder('c')
+           ->andWhere('c.specialisation = :val')
+           ->setParameter('val', $value)
+           ->getQuery()
+           ->getOneOrNullResult()
+       ;
+   }
 }

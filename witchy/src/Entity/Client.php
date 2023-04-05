@@ -6,10 +6,12 @@ use App\Repository\ClientRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: ClientRepository::class)]
+#[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
 class Client implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -54,9 +56,14 @@ class Client implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\ManyToOne(inversedBy: 'clients')]
     private ?Commercial $idCommercial = null;
 
+    #[ORM\OneToMany(mappedBy: 'idClient', targetEntity: Historique::class, orphanRemoval: true)]
+    private Collection $historiques;
+
     public function __construct()
     {
         $this->adresses = new ArrayCollection();
+        $this->historiques = new ArrayCollection();
+        $this->created_at = new \DateTimeImmutable();
     }
 
     public function getId(): ?int
@@ -239,6 +246,36 @@ class Client implements UserInterface, PasswordAuthenticatedUserInterface
     public function setIdCommercial(?Commercial $idCommercial): self
     {
         $this->idCommercial = $idCommercial;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Historique>
+     */
+    public function getHistoriques(): Collection
+    {
+        return $this->historiques;
+    }
+
+    public function addHistorique(Historique $historique): self
+    {
+        if (!$this->historiques->contains($historique)) {
+            $this->historiques->add($historique);
+            $historique->setIdClient($this);
+        }
+
+        return $this;
+    }
+
+    public function removeHistorique(Historique $historique): self
+    {
+        if ($this->historiques->removeElement($historique)) {
+            // set the owning side to null (unless already changed)
+            if ($historique->getIdClient() === $this) {
+                $historique->setIdClient(null);
+            }
+        }
 
         return $this;
     }

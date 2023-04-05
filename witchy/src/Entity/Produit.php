@@ -34,13 +34,22 @@ class Produit
     #[ORM\OneToMany(mappedBy: 'RefProduit', targetEntity: Photo::class)]
     private Collection $photos;
 
-    #[ORM\ManyToOne(inversedBy: 'RefProduit')]
-    private ?Stock $stock = null;
+    #[ORM\OneToMany(mappedBy: 'RefProduit', targetEntity: LigneCommande::class, orphanRemoval: true)]
+    private Collection $ligneCommandes;
+
+    #[ORM\OneToMany(mappedBy: 'RefProduit', targetEntity: Liste::class)]
+    private Collection $listes;
+
+    #[ORM\OneToMany(mappedBy: 'RefProduit', targetEntity: Stock::class)]
+    private Collection $stocks;
 
     public function __construct()
     {
         $this->idCat = new ArrayCollection();
         $this->photos = new ArrayCollection();
+        $this->ligneCommandes = new ArrayCollection();
+        $this->listes = new ArrayCollection();
+        $this->stocks = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -150,14 +159,93 @@ class Produit
         return $this;
     }
 
-    public function getStock(): ?Stock
+
+    /**
+     * @return Collection<int, LigneCommande>
+     */
+    public function getLigneCommandes(): Collection
     {
-        return $this->stock;
+        return $this->ligneCommandes;
     }
 
-    public function setStock(?Stock $stock): self
+    public function addLigneCommande(LigneCommande $ligneCommande): self
     {
-        $this->stock = $stock;
+        if (!$this->ligneCommandes->contains($ligneCommande)) {
+            $this->ligneCommandes->add($ligneCommande);
+            $ligneCommande->setRefProduit($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLigneCommande(LigneCommande $ligneCommande): self
+    {
+        if ($this->ligneCommandes->removeElement($ligneCommande)) {
+            // set the owning side to null (unless already changed)
+            if ($ligneCommande->getRefProduit() === $this) {
+                $ligneCommande->setRefProduit(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Liste>
+     */
+    public function getListes(): Collection
+    {
+        return $this->listes;
+    }
+
+    public function addListe(Liste $liste): self
+    {
+        if (!$this->listes->contains($liste)) {
+            $this->listes->add($liste);
+            $liste->setRefProduit($this);
+        }
+
+        return $this;
+    }
+
+    public function removeListe(Liste $liste): self
+    {
+        if ($this->listes->removeElement($liste)) {
+            // set the owning side to null (unless already changed)
+            if ($liste->getRefProduit() === $this) {
+                $liste->setRefProduit(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Stock>
+     */
+    public function getStocks(): Collection
+    {
+        return $this->stocks;
+    }
+
+    public function addStock(Stock $stock): self
+    {
+        if (!$this->stocks->contains($stock)) {
+            $this->stocks->add($stock);
+            $stock->setRefProduit($this);
+        }
+
+        return $this;
+    }
+
+    public function removeStock(Stock $stock): self
+    {
+        if ($this->stocks->removeElement($stock)) {
+            // set the owning side to null (unless already changed)
+            if ($stock->getRefProduit() === $this) {
+                $stock->setRefProduit(null);
+            }
+        }
 
         return $this;
     }
