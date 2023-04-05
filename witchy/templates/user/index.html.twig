@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ app.user.prenom }}
+{% endblock %}
+
+{% block body %}
+
+
+	{% include "_partials/_head.html.twig" %}
+	{% if app.user %}
+		<div class="mb-3 text-center">
+			You are logged in as
+			{{ app.user.prenom }},
+			<a href="{{ path('app_logout') }}">Logout</a>
+		</div>
+
+
+		<div class="container">
+			<div class="row">
+            <div class="relativBox resetmP">
+            
+           
+				<div class="col-12 bshadow userBox">
+                <div class="banniere"> <img src="https://i.pinimg.com/564x/5a/fc/10/5afc109e1f661909dcdacbc9a55e05b7.jpg" class="img-fluid" alt=""> </div>
+                </div>
+
+                <div class="pictureSelfprt mx-auto"> <img src="https://i.pinimg.com/564x/f6/2b/7d/f62b7d963b4033690f68f38b6faefe46.jpg" class="img-fluid pictureSelf" alt=""></div>
+		</div> </div>
+			</div>
+		</div>
+
+
+		<div class="container mt-5">
+			<div class="row">
+				<div class="col-12 col-md-6">  Order History : table </div>
+				<div class="col-12 col-md-6">		Account Details : view addresses</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="row">
+				<div class="col-12">then something like : what may interest you
+		</div>
+			</div>
+		</div>
+
+		
+
+
+
+		{% else %}
+
+	{% endif %}
+
+	{% include "_partials/_footer.html.twig" %}
+
+{% endblock %}

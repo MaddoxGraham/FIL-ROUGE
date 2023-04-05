@@ -2,22 +2,13 @@
 
 namespace App\Form;
 
-use App\Entity\Adresse;
-use App\Entity\Client;
-use App\Entity\Coefficient;
-use App\Entity\Commercial;
-use App\Repository\CommercialRepository;
-use Doctrine\ORM\EntityRepository;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
@@ -31,27 +22,32 @@ class RegistrationFormType extends AbstractType
 
             ->add('email', EmailType::class, [
                 'attr' => [
-                    'class' => 'form-control'
+                    'class' => 'form-control',
+                    'placeholder' => 'Contact@slayed.com'
                 ],
                 'label' => 'Votre E-Mail'
             ])
             ->add('nom', TextType::class, [
                 'attr' => [
-                    'class' => 'form-control'
+                    'class' => 'form-control',
+                    'placeholder' => 'Nom'
                 ],
                 'label' => 'Votre Nom'
             ])
             ->add('prenom', TextType::class, [
                 'attr' => [
-                    'class' => 'form-control'
+                    'class' => 'form-control',
+                    'placeholder' => 'Prénom'
                 ],
                 'label' => 'Votre Prénom'
             ])
             ->add('telephone', TextType::class, [
                 'attr' => [
-                    'class' => 'form-control'
+                    'class' => 'form-control',
+                    'placeholder' => 'Ur.ph.on.en.br'
                 ],
-                'label' => 'Votre Téléphone'
+                'label' => 'Votre Téléphone',
+                'required' => false
             ])
 
             ->add('nomination_adresse', ChoiceType::class, [
@@ -69,23 +65,27 @@ class RegistrationFormType extends AbstractType
             ->add('adresse', TextType::class, [
                 'mapped' => false,
                 'attr' => [
-                    'class' => 'form-control'
+                    'class' => 'form-control',
+                    'placeholder' => 'adresse'
                 ],
                 'label' => 'Votre adresse'
             ])
             ->add('ville', TextType::class, [
                 'mapped' => false,
                 'attr' => [
-                    'class' => 'form-control'
+                    'class' => 'form-control',
+                    'placeholder' => 'Ville'
                 ],
                 'label' => 'Votre Ville'
             ])
             ->add('cp', TextType::class, [
                 'mapped' => false,
                 'attr' => [
-                    'class' => 'form-control'
+                    'class' => 'form-control',
+                    'placeholder' => 'Code Postal',
                 ],
-                'label' => 'Votre code Postal'
+                
+                'label' => 'Votre code Postal',
             ])
 
 

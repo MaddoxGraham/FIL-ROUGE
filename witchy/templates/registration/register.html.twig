@@ -6,7 +6,7 @@
 
 {% include "_partials/_head.html.twig" %}
 
-<section class="container py-3 bg-Ardoise txt-LightGrey ">
+<section class="mt-3 mb-3  bshadow txt-LightGrey bg-Ardoise">
     <div class="row inscriptionBlock">
 
     	<div class="col-md-6 col-12 col-lg-4 registerBlock"> 
@@ -16,17 +16,18 @@
 			<div class="px-app px-glitch  mb-5">
 				<span class="px-glitchtext px-glitchtext-anim display-5 font-handwritten">Already a child of the moon ? </span>
 			</div>
-			<div class="LargeFont display-6" > Connect  </div> <div class="font-serif ft-size2 mb-5">and be the Godess you deserve to be</div> 
-			<a href="{{path('app_register')}}" class=" mt-5 btn btnRegister">REGISTER</a>   </div>
+			<div class="LargeFont display-6" > Connect  </div> <div class="font-serif ft-size2 mb-5">and find the perfect fit for your inner demon</div> 
+			<a href="{{path('app_login')}}" class=" mt-5 btn btnRegister">LOGIN</a>   </div>
 			</div>
 
 
-        <div class="col">
-          <h1>Join the cult</h1>
+    	<div class="col-md-6 col-lg-8 col-12 p-3 formBodyRe my-auto">
+
+          <h1 class="text-center display-2 formBodyRe" >Join the cult</h1>
 
     {{ form_start(registrationForm) }}
-
-    <fieldset class="mb-3" >
+<div class="d-flex flex-register"> 
+    <div class="mb-3 col-12 pe-2 border-end col-md-6" >
     <legend> My Identity </legend>
      {{ form_row(registrationForm.nom) }}
         {{ form_row(registrationForm.prenom) }}
@@ -34,17 +35,19 @@
         {{ form_row(registrationForm.plainPassword, {
             label: 'Password'
         }) }}
-    </fieldset>
-       <fieldset>
-       <legend> Mes coordonées </legend>
+    </div>
+       <div class="mb-3 ps-2 col-12 col-md-6" >
+       <legend> My adress </legend>
         {{ form_row(registrationForm.telephone) }}
-
-        
-       </fieldset>
+        {{ form_row(registrationForm.adresse) }}
+        {{ form_row(registrationForm.ville) }}
+        {{ form_row(registrationForm.cp) }}
+        {{ form_row(registrationForm.nomination_adresse) }}
+       </div>
              
-     
+     </div>
     
-        <button type="submit" class="btn mt-3 btn-lg btn-secondary">Register</button>
+        <button type="submit" class="w-100 btn btnRegister">Register</button>
     {{ form_end(registrationForm) }}
         </div>
     </div>

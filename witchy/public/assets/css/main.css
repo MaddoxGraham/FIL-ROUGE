@@ -22,9 +22,11 @@
   --px-color-font: rgb(235, 237, 243);
   --px-color-bodybg: rgb(19, 26, 41);
 }
-.bg-Red{
+
+.bg-Red {
   background-color: rgba(80, 17, 17, 0.432);
 }
+
 .bg-Brown {
   background-color: var(--Brown) !important;
 }
@@ -80,9 +82,11 @@ body {
 .font-serif {
   font-family: 'Old Standard TT', serif;
 }
-.ft-size2{
+
+.ft-size2 {
   font-size: 2vw;
 }
+
 .relativBox {
   position: relative;
 }
@@ -1583,21 +1587,17 @@ a {
 
   /***********/
 
-  .currentObsession {}
-
-  .currentObsBck {}
-
-  .currentObsBck>* {}
-
-  .dollPosition {}
-
-  .demoDollBox {}
-
-  .demoDollBox>.img-fluid {}
+  .currentObsBck>* {
+    font-size: 2vw;
+  }
+  .demoDollBox>.img-fluid {
+    height: 12vw;
+    padding-bottom: 0 !important;
+  }
 
   .doll {
-    height: 36vw;
-    margin-left: -40%;
+    height: 57vw;
+    margin-left: -25%;
     margin-top: -10%;
     margin-bottom: 5%;
   }
@@ -1672,39 +1672,41 @@ a {
 
 /********* LOGIN AND REGISTRATION *************************/
 @media screen and (min-width: 915px) {
-.loginBlock{
-  background-image: url(https://i.pinimg.com/564x/39/b7/6a/39b76a36422faf451d610ae0fc6f03cf.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: top;
-}
+  .loginBlock {
+    background-image: url(https://i.pinimg.com/564x/39/b7/6a/39b76a36422faf451d610ae0fc6f03cf.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top;
+  }
 
-  .registerBlock{
+  .registerBlock {
     text-align: center;
     display: block !important;
     position: relative;
     overflow: hidden;
     padding: 0;
   }
-  .inscriptionBlock{
-    background-image: url(https://i.pinimg.com/564x/16/7e/e7/167ee7bd56278c9ce61563a068b1a1ae.jpg);
+
+  .inscriptionBlock {
+    background-image: url(https://i.pinimg.com/736x/6e/51/b0/6e51b0a43111a4fdb8d12c8d21839232.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: top;
   }
 
-  .imgBlockprt{
+  .imgBlockprt {
     padding: 0;
     margin: 0;
     width: 100%;
   }
 
-  .imgBlock{
+  .imgBlock {
     object-fit: cover;
     width: 100% !important;
 
   }
-  .txtblock{
+
+  .txtblock {
     position: absolute !important;
     top: 20%;
     padding-left: 10%;
@@ -1713,22 +1715,86 @@ a {
     padding-top: 20%;
     padding-bottom: 100%;
   }
-  .txtblock>.display-6{
+
+  .txtblock>.display-6 {
     font-size: 6vw;
   }
-  .btnRegister{
+
+  .btnRegister {
     padding: 5%;
     background-color: var(--lightGreySolid);
     color: var(--ardoise);
   }
+
+  .flex-register {
+    flex-direction: row !important;
   }
-  .formBody{
-    background-color: #f7525238;
-    padding: 2%;
-  }
-  .registerBlock{
-    display: none;
-  }
+  
+}
+
+.flex-register {
+  flex-direction: column;
+}
+
+.formBodyRe {
+  background-color: #1a0b0b38;
+  padding: 2%;
+  border-radius: 5px;
+}
+
+.formBody {
+  background-color: #f7525238;
+  padding: 2%;
+}
+
+.registerBlock {
+  display: none;
+}
 
 
+/************ USER PROFIL **********************/
+.resetmP{
+    margin: 0;
+  padding: 0;
+}
+.userBox{
+ 
+}
+.banniere{
+   max-height: 30vw;
+  overflow: hidden;
+}
+.banniere>img{
+  object-fit: cover;
+  max-height: 30vw;
+  width: 100%;
+  
+}
 
+.pictureSelfprt{
+width: 100%;
+display: block;
+}
+.pictureSelf{
+  position: absolute;
+  top: 10%;
+  left: 30%;
+  border-radius:50%;
+  width: 150px;
+  height: 150px;
+}
+
+@media screen and (min-width: 915px) {
+  banniere {
+    max-height: 20vw;
+  }
+  .pictureSelf{
+    position: absolute;
+    top: 10%;
+    left: 30%;
+    border-radius:50%;
+    width: 350px;
+    height: 350px;
+  }
+  
+}

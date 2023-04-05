@@ -26,12 +26,14 @@
 					{% endif %}
 
 					{% if app.user %}
-						<div class="mb-3">
+						<div class="mb-3 text-center">
 							You are logged in as
-							{{ app.user.userIdentifier }},
+							{{ app.user.prenom }},
 							<a href="{{ path('app_logout') }}">Logout</a>
 						</div>
-					{% endif %}
+		
+					{% else %}
+				
 
 					<h1 class="h3 pb-3 font-weight-normal text-center">Please sign in</h1>
 					<label for="inputEmail">Email</label>
@@ -43,7 +45,7 @@
 					<button class="btn mt-3 mx-auto mb-3 btn-lg btn-secondary " type="submit">
 						Sign in
 					</button>
-				</form>
+				</form>			{% endif %}
 			</div>
 		</div>
 	</section>
