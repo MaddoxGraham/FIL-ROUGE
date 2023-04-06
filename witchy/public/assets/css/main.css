@@ -4,7 +4,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Alumni+Sans+Collegiate+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Licorice&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Old+Standard+TT&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bigelow+Rules&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
@@ -28,7 +28,7 @@
 }
 
 .bg-Brown {
-  background-color: var(--Brown) !important;
+  background-color: transparent !important;
 }
 
 .bg-Ardoise {
@@ -109,6 +109,13 @@ body {
 
 
 /*** TOP AND TOP SLIDEBAR **/
+
+.topBar{
+  background-image: url(https://i.pinimg.com/564x/3d/1b/b3/3d1bb384e9ca0741497c36b4026f20ce.jpg);
+  
+}
+
+/****************** TEST HOLO **********************/
 
 
 
@@ -205,21 +212,53 @@ button {
 
 
 .display-1 {
-  font-family: 'Alumni Sans Collegiate One', sans-serif;
+  font-family: 'Bungee Shade', cursive;
   font-size: 5rem;
-  color: transparent;
-  font-size: 126px;
-  background: url("../medias/WithyStars.png") repeat;
-  background-position: 40% 50%;
-  -webkit-background-clip: text;
+  --interval: 1s;
+  display: block;
+  text-shadow: 
+    0 0 10px var(--color1),
+    0 0 20px var(--color2),
+    0 0 40px var(--color3),
+    0 0 80px var(--color4);
+  will-change: filter, color;
+  filter: saturate(60%);
+  animation: flicker steps(100) var(--interval) 1s infinite;
+  color: rgb(91, 214, 252);
+  --color1: rgb(0, 162, 255);
+  --color2: rgb(0, 110, 255);
+  --color3: rgb(0, 51, 128);
+  --color4: rgb(0, 18, 100);
 }
 
+@keyframes flicker {
+  50% {
+    color: white;
+    filter: saturate(200%) hue-rotate(20deg);
+  }
+}
 .subtitle {
   font-family: 'Licorice', cursive;
-  padding-left: 6%;
+  padding-left: 41%;
   font-size: 180px;
-  font-size: 28px;
-  margin-top: -51px !important;
+  font-size: 41px;
+  margin-top: -40px !important;
+  --interval: 1s;
+  display: block;
+  text-shadow: 
+    0 0 10px var(--color1),
+    0 0 20px var(--color2),
+    0 0 40px var(--color3),
+    0 0 80px var(--color4);
+  will-change: filter, color;
+  filter: saturate(60%);
+  animation: flicker steps(100) var(--interval) 1s infinite;
+  color: rgb(166, 91, 252);
+  --color1: rgb(195, 0, 255);
+  --color2: rgb(255, 0, 255);
+  --color3: rgb(128, 0, 90);
+  --color4: rgb(100, 0, 33);
+
 }
 
 
@@ -292,8 +331,10 @@ button {
   background-color: greenyellow;
   padding-left: 25%;
   padding-bottom: 5%;
-  background-image: url(https://i.pinimg.com/564x/ef/67/0f/ef670fb0e24dbe8c275d81c2c18d8a7f.jpg);
+  background-image: url(https://zupimages.net/up/23/14/20dt.gif);
   background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom;
   margin-bottom: 5%;
 }
 
