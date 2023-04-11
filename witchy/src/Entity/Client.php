@@ -59,12 +59,6 @@ class Client implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'idClient', targetEntity: Historique::class, orphanRemoval: true)]
     private Collection $historiques;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $profPic = null;
-
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $profBan = null;
-
     public function __construct()
     {
         $this->adresses = new ArrayCollection();
@@ -282,30 +276,6 @@ class Client implements UserInterface, PasswordAuthenticatedUserInterface
                 $historique->setIdClient(null);
             }
         }
-
-        return $this;
-    }
-
-    public function getProfPic(): ?string
-    {
-        return $this->profPic;
-    }
-
-    public function setProfPic(?string $profPic): self
-    {
-        $this->profPic = $profPic;
-
-        return $this;
-    }
-
-    public function getProfBan(): ?string
-    {
-        return $this->profBan;
-    }
-
-    public function setProfBan(?string $profBan): self
-    {
-        $this->profBan = $profBan;
 
         return $this;
     }
