@@ -15,9 +15,12 @@
 ## BackEnd - 
 
 🟣 Finir les dataFixtures 
-
+    🟥 Corriger le micmac de produit et categorie (foreign key)
+    🟧 Finir les faker sur les fixtures de produit
+    🟨 Finir les faker sur les photos des produits
+    
 ⚫️ Ajuster les détails de l'authentification
 
 ⚪️ Ajouter les modifications sur le profil utilisateur 
 
-🟤 
+🟤  
