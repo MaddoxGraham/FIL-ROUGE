@@ -22,16 +22,15 @@ class Categorie
     private ?string $nomination = null;
 
     #[ORM\ManyToOne(targetEntity: self::class, inversedBy: 'subCategories')]
+    #[ORM\JoinColumn(onDelete:'CASCADE')]
     private ?self $parent = null;
 
     #[ORM\OneToMany(mappedBy: 'parent', targetEntity: self::class)]
     private Collection $subCategories;
 
-    #[ORM\ManyToMany(targetEntity: Produit::class, mappedBy: 'idCat')]
+    #[ORM\OneToMany(mappedBy: 'idCat', targetEntity: Produit::class)]
     private Collection $produits;
 
-    #[ORM\Column(length: 255)]
-    private ?string $slug = null;
 
     public function __construct()
     {
@@ -121,18 +120,6 @@ class Categorie
         if ($this->produits->removeElement($produit)) {
             $produit->removeIdCat($this);
         }
-
-        return $this;
-    }
-
-    public function getSlug(): ?string
-    {
-        return $this->slug;
-    }
-
-    public function setSlug(string $slug): self
-    {
-        $this->slug = $slug;
 
         return $this;
     }

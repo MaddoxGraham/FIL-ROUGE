@@ -31,7 +31,7 @@ class Produit
     #[ORM\Column(length: 255)]
     private ?string $slug = null;
 
-    #[ORM\ManyToMany(targetEntity: Categorie::class, inversedBy: 'produits')]
+    #[ORM\ManyToOne(inversedBy:'produits',targetEntity: Categorie::class)]
     private Collection $idCat;
 
     #[ORM\OneToMany(mappedBy: 'RefProduit', targetEntity: Photo::class)]
@@ -111,9 +111,14 @@ class Produit
     /**
      * @return Collection<int, Categorie>
      */
-    public function getIdCat(): Collection
+    public function getIdCat()
     {
         return $this->idCat;
+    }
+    public function setIdCat($idCat): self
+    {
+        $this->idCat = $idCat;
+        return $this;
     }
 
     public function addIdCat(Categorie $idCat): self
