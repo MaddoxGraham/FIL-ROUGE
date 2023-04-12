@@ -12,13 +12,11 @@
 
 	</div>
 </div>
-<div
-	class="container d-flex bg-Brown justify-content-between ">
+<div class="container topBar d-flex bg-Brown justify-content-between ">
 
 	<!-- Boite A : Burger start -->
 
-
-	<div class="my-auto">
+	<div class="my-auto navBoxBurger">
 
 
 		<nav class="navbar  navbar-default  ">
@@ -36,26 +34,35 @@
 	<!-- Boite A : Burger end -->
 
 
-	<!-- Boite B : LOGO  start-->
-	<div class"">
+	<!-- Boite B : LOGO  start--><a href="{{ path('app_catalogue')}}">
+	<div class="BoxTitleContainer my-auto">
+	
 		<div class="col-lg-4 m-auto Logo col-md-12">
-			<img src="assets/medias/WitchyDarker.png" class=" mx-auto d-block img-fluid" alt="logo Witchy">
+			<img src="assets/medias/WitchyLogo.gif" class=" mx-auto d-block img-fluid" alt="logo Witchy">
 		</div>
-		<div class="col-lg-8 titleBox mx-auto ">
+		<div class="col-lg-8 titleBox my-auto mx-auto ">
 			<h1 class="display-1">
 				Witchy</h1>
 			<div class="h3 subtitle">
 				Your dark soulmate
 			</div>
 		</div>
-	</div>
+	</div></a>
 	<!-- Boite B : LOGO  end-->
 
 
 	<!-- Boite c : ICONS start -->
 	<div class="my-auto d-flex flex-nowrap">
-<button type="button" class="bg-Brown "> <div class="col-md-6 iconMaker "><img src="assets/medias/cauldron.webp" class="img-fluid" alt="votre chaudron"> </div> </button>
-<button type="button" class="bg-Brown "> <div class="col-md-6 iconMaker"><img src="assets/medias/profil.webp" class="img-fluid" alt="votre panier"> </div></button>
+		<button type="button" class="bg-Brown ">
+			<div class="col-md-6 iconMaker panier ">
+			<p class="roudCount m-auto"> <span class="nbr m-auto"> 2</span>  </p>
+			<img src="assets/medias/meh.png" class="img-fluid" alt="votre chaudron">
+			</div>
+		</button>
+		<a href="{{ path('app_login')}}" class="bg-Brown ">
+			<div class="col-md-6 iconMaker"><img src="assets/medias/mehProfRec.png" class="img-fluid" alt="votre acount">
+			</div>
+		</a>
 
 
 	</div>
@@ -65,72 +72,360 @@
 
 <container class="contentNav ">
 
-				<div class="collapse p-3 bg-Ardoise txt-LightGrey navbar-collapse" id="navbarNav">
-        <span class="triangle">
-        </span>
-					<ul class="navbar-nav">
+	<div class="collapse p-3 bg-Ardoise txt-LightGrey navbar-collapse" id="navbarNav">
+		<span class="triangle"></span>
 
-						<li class="nav-item border-bottom border-light pb-2">
-							<a class="nav-link active" aria-current="page" href="#">New</a>
+		<ul class="navbar-nav flexNav">
+			<div>
+				<li class="nav-item border-bottom border-light pb-2 d-flex justify-content-between majorClass ">
+					<a class="nav-link active" aria-current="page" href="#">New</a>
+					<i class="fa-sharp fa-solid fa-caret-down"></i>
+				</li>
 
-							<ul class="navbar-nav undernav">
-
-							<li class="nav-item border-light" >
-							<a class="nav-link active" aria-current="page" href="#"> Dress </a>
-							</li>
-
-							<li class="nav-item border-light" >
-							<a class="nav-link active" aria-current="page" href="#"> Top </a>
-							</li>
-
-														<li class="nav-item border-light " >
-							<a class="nav-link active" aria-current="page" href="#"> Bottom </a>
-							</li>
-
-							</ul>
-
-						</li>
-
-
-						<li class="nav-item border-bottom border-light pt-2 pb-2">
-							<a class="nav-link" href="#">Women</a>
-														<ul class="navbar-nav undernav">
-
-							<li class="nav-item border-light" >
-							<a class="nav-link active" aria-current="page" href="#"> Dress </a>
-							</li>
-
-							<li class="nav-item border-light" >
-							<a class="nav-link active" aria-current="page" href="#"> Top </a>
-							</li>
-
-														<li class="nav-item border-light " >
-							<a class="nav-link active" aria-current="page" href="#"> Bottom </a>
-							</li>
-
-							</ul>
-
-						</li>
-						<li class="nav-item border-bottom border-light pt-2 pb-2">
-							<a class="nav-link" href="#">Men</a>
-						</li>
-						<li class="nav-item border-bottom border-light pt-2 pb-2">
-							<a class="nav-link" href="#">Shoes
+				<ul class="navbar-nav undernav underHidden">
+					<div class="col-md-6 catBoxSubMenu">
+						<li style="--clr:#ff1717" class="nav-item border-light">
+							<a class="nav-link active subClass" aria-current="page" href="#"data-text="What">
+								What's new ?
 							</a>
 						</li>
-						<li class="nav-item border-bottom border-light pt-2 pb-2">
-							<a class="nav-link" href="#">Accessories</a>
+						<li style="--clr:#fffb17" class="nav-item border-light">
+							<a class="nav-link active subClass" aria-current="page" href="#"data-text="Back">
+								Back in stock
+							</a>
 						</li>
-						<li class="nav-item border-bottom border-light pt-2 pb-2">
-							<a class="nav-link" href="#">Home</a>
+
+						<li style="--clr:#17ffbc" class="nav-item border-light ">
+							<a class="nav-link active subClass" aria-current="page" href="#"data-text="current">
+								current obssession
+							</a>
 						</li>
-						<li class="nav-item border-bottom border-light pt-2 pb-2">
-							<a class="nav-link" href="#">Beauty</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#">Clearance</a>
-						</li>
+					</div>
+					<div class="col-md-6  my-auto demoUnderCatImg">
+						<div>
+							<img class="img-fluid" src="https://i.pinimg.com/originals/e2/b8/3d/e2b83d45b6f4566ad9aaca0062989bc5.gif" alt="Tag you're in"></div>
+						<p class="">
+							<span class="DarkGlitch" data-text="Black is ~ ~">
+								<span class="font-serif">Black is</span>
+								my bright side</span>
+						</p>
+						<div>
+							<img class="img-fluid" src="https://i.pinimg.com/564x/af/ba/9c/afba9cb616b506bb9d0cb94968f84e18.jpg" alt="where is the Big Bad Wolf ? "></div>
+
+
+					</div>
+				</div>
+
+				<div>
+					<li class="nav-item border-bottom border-light pt-2 pb-2 d-flex justify-content-between majorClass">
+						<a class="nav-link " href="#">Women</a>
+						<i class="fa-sharp fa-solid fa-caret-down"></i>
+					</li>
+					<ul class="navbar-nav undernav underHidden">
+						<div class=" col-md-6 catBoxSubMenu">
+							<li style="--clr:#ff2003" class="nav-item border-light ">
+								<a class="nav-link active subClass" aria-current="page" href="#" data-text="Dress";>
+									Dress
+								</a>
+							</li>
+
+							<li style="--clr:#ff6493" class="nav-item border-light">
+								<a class="nav-link active subClass" aria-current="page" href="#" data-text="Top";>
+									Top
+								</a>
+							</li>
+
+							<li style="--clr:#00ade1" class="nav-item border-light ">
+								<a class="nav-link active subClass" aria-current="page" href="#" data-text="Bottom";>
+									Bottom
+								</a>
+							</li>
+							<li style="--clr:#00dc82" class="nav-item border-light ">
+								<a class="nav-link active subClass" aria-current="page" href="#" data-text="Outwear";>
+									Outwear
+								</a>
+							</li>
+
+							<li style="--clr:#ffffff" class="nav-item border-light ">
+								<a class="nav-link active subClass" aria-current="page" href="#" data-text="All";>
+									All women clothing
+								</a>
+							</li>
+						</div>
+						<div class="col-md-6 my-auto demoUnderCatImg">
+							<div>
+								<img class="img-fluid" src="https://i.pinimg.com/564x/2d/13/e1/2d13e1c0976b4428cd90c2dff78f27fd.jpg" alt="Tag you're in"></div>
+							<p class="px-app gitchyMenu px-glitch">
+								<span class="px-glitchtext px-glitchtext-anim">大きな悪いオオカミはどこですか</span>
+							</p>
+							<div>
+								<img class="img-fluid" src="https://i.pinimg.com/736x/df/a6/74/dfa67443b017ed999a78b156ed67140b.jpg" alt="where is the Big Bad Wolf ? "></div>
+
+
+						</div>
 					</ul>
 				</div>
 
+				<div>
+					<li class="nav-item border-bottom border-light pt-2 pb-2 d-flex justify-content-between majorClass">
+						<a class="nav-link " href="#">Men</a>
+						<i class="fa-sharp fa-solid fa-caret-down"></i>
+					</li>
+					<ul class="navbar-nav undernav underHidden">
+						<div class="col-md-6 catBoxSubMenu">
+
+							<li style="--clr:#f164de" class="nav-item border-light">
+								<a class="nav-link active subClass" aria-current="page" href="#" data-text="Top">
+									Top
+								</a>
+							</li>
+
+							<li style="--clr:#e9f997" class="nav-item border-light ">
+								<a class="nav-link active subClass" aria-current="page" href="#" data-text="Bottom">
+									Bottom
+								</a>
+							</li>
+							<li style="--clr:#64f6ff" class="nav-item border-light ">
+								<a class="nav-link active subClass" aria-current="page" href="#" data-text="Outwear">
+									Outwear
+								</a>
+							</li>
+							<li style="--clr:#ffffff" class="nav-item border-light ">
+								<a class="nav-link active subClass" aria-current="page" href="#"data-text="All">
+									All men clothing
+								</a>
+							</li>
+						</div>
+						<div class="col-md-6 my-auto demoUnderCatImg">
+							<div>
+								<img class="img-fluid" src="https://i.pinimg.com/564x/3b/93/65/3b936546dccf79beb2f10a45d5feb499.jpg" alt="Never Enough"></div>
+							<p class="">
+								<span class="DarkGlitch" data-text="nothing at all">Be the king or be
+									<span class="font-serif">nothing at all
+									</span>
+								</span>
+							</p>
+							<div>
+								<img class="img-fluid" src="https://i.pinimg.com/564x/dd/c9/c4/ddc9c477bb5254e62446ffcb1d438b50.jpg" alt="where is the Big Bad Wolf ? "></div>
+
+
+						</div>
+					</ul>
+				</div>
+
+				<div>
+
+					<li class="nav-item border-bottom border-light pt-2 pb-2 d-flex justify-content-between majorClass">
+						<a class="nav-link  " href="#">Shoes</a>
+						<i class="fa-sharp fa-solid fa-caret-down"></i>
+					</li>
+					<ul class="navbar-nav undernav underHidden">
+						<div class="col-md-6 catBoxSubMenu">
+							<li style="--clr:#00dc82" class="nav-item border-light">
+								<a class="nav-link active subClass" aria-current="page" href="#" data-text="Boots">
+									Boots
+								</a>
+							</li>
+
+							<li style="--clr:#ff8526" class="nav-item border-light">
+								<a class="nav-link active subClass" aria-current="page" href="#" data-text="Plateforms">
+									Plateforms
+								</a>
+							</li>
+
+							<li style="--clr:#ff564b" class="nav-item border-light ">
+								<a class="nav-link active subClass" aria-current="page" href="#" data-text="Heels">
+									Heels
+								</a>
+							</li>
+							<li style="--clr:#ba30ff" class="nav-item border-light ">
+								<a class="nav-link active subClass" aria-current="page" href="#" data-text="Flat">
+									Flat
+								</a>
+							</li>
+							<li style="--clr:#ffffff"  class="nav-item border-light ">
+								<a class="nav-link active subClass" aria-current="page" href="#" data-text="All">
+									All footwear
+								</a>
+							</li>
+
+						</div>
+						<div class="col-md-6 my-auto demoUnderCatImg">
+							<div class="">
+								<img class="img-fluid" src="https://i.pinimg.com/564x/b9/53/1e/b9531e762968aa24a6273b1698dc904b.jpg" alt="Tag you're in"></div>
+							<p class="px-app gitchyMenu px-glitch">
+								<span class="px-glitchtext px-glitchtext-anim">
+									I needed heels
+									<span class="font-serif">
+										to step on people</span>
+								</span>
+							</p>
+
+							<div>
+								<img class="img-fluid mt-5" src="https://i.pinimg.com/originals/69/a3/91/69a391f71208601d114231c01b5f2115.gif" alt="where is the Big Bad Wolf ? "></div>
+
+						</div>
+					</ul>
+				</li>
+			</div>
+			<div>
+
+				<li class="nav-item border-bottom border-light pt-2 pb-2 d-flex justify-content-between majorClass">
+					<a class="nav-link  " href="#">Accessories</a>
+					<i class="fa-sharp fa-solid fa-caret-down"></i>
+				</li>
+				<ul class="navbar-nav undernav underHidden">
+					<div class="col-md-6 catBoxSubMenu">
+
+						<li style="--clr:#57b8ff"class="nav-item border-light">
+							<a  class="nav-link active subClass" aria-current="page" href="#" data-text="Jewellery">
+								Jewellery
+							</a>
+						</li>
+
+						<li style="--clr:#85ff57" class="nav-item border-light">
+							<a class="nav-link active subClass" aria-current="page" href="#" data-text="Bags">
+								Bags
+							</a>
+						</li>
+
+						<li style="--clr:#ff9740" class="nav-item border-light ">
+							<a class="nav-link active subClass" aria-current="page" href="#" data-text="Belts ">
+								Belts & Harnesses
+							</a>
+						</li>
+						<li style="--clr:#e9f997" class="nav-item border-light ">
+							<a class="nav-link active subClass" aria-current="page" href="#" data-text="Socks">
+								Socks
+							</a>
+						</li>
+						<li style="--clr:#ff5776" class="nav-item border-light ">
+							<a class="nav-link active subClass" aria-current="page" href="#" data-text="Sunglasses"> 
+								Sunglasses
+							</a>
+						</li>
+						<li style="--clr:#e9f997" class="nav-item border-light ">
+							<a class="nav-link active subClass" aria-current="page" href="#" data-text="Hair">
+								Hair Accessories
+							</a>
+						</li>
+						<li style="--clr:#f1b764" class="nav-item border-light ">
+							<a class="nav-link active subClass" aria-current="page" href="#" data-text="Hat">
+								Hat & Headbands
+							</a>
+						</li>
+
+
+						<li style="--clr:#ffffff"  class="nav-item border-light ">
+							<a class="nav-link active subClass" aria-current="page" href="#" data-text="All">
+								All Accessories
+							</a>
+						</li>
+					</div>
+					<div class="col-md-6 my-auto my-auto demoUnderCatImg">
+						<div>
+							<img class="img-fluid" src="https://i.pinimg.com/564x/eb/bf/ea/ebbfea61ab2f62359a278f9fa89b1e56.jpg" alt="Tag you're in"></div>
+						<p class="px-app gitchyMenu px-glitch">
+							<span class="px-glitchtext px-glitchtext-anim">
+								규칙 없음, 게임 없음</span>
+						</p>
+						<div>
+							<img class="img-fluid" src="https://i.pinimg.com/564x/59/92/96/599296ad5312c26176228b050cb2a0ed.jpg" alt="where is the Big Bad Wolf ? "></div>
+
+					</div>
+
+				</ul>
+			</li>
+		</div>
+		<div>
+
+
+			<li class="nav-item border-bottom border-light pt-2 pb-2 d-flex justify-content-between majorClass">
+				<a class="nav-link " href="#">Home</a>
+				<i class="fa-sharp fa-solid fa-caret-down"></i>
+			</li>
+			<ul class="navbar-nav undernav underHidden">
+				<div class="col-md-6 catBoxSubMenu">
+					<li  style="--clr:#46ff43"  class="nav-item border-light">
+						<a class="nav-link active subClass" aria-current="page" href="#" data-text="Bedding">
+							Bedding & Cushions
+						</a>
+					</li>
+
+					<li  style="--clr:#ff5d43"  class="nav-item border-light">
+						<a class="nav-link active subClass" aria-current="page" href="#" data-text="Rugs">
+							Rugs
+						</a>
+					</li>
+
+					<li  style="--clr:#6543ff"  class="nav-item border-light ">
+						<a class="nav-link active subClass" aria-current="page" href="#" data-text=" Candles">
+							 Candles & scent
+						</a>
+					</li>
+					<li  style="--clr:#ffff43"  class="nav-item border-light ">
+						<a class="nav-link active subClass" aria-current="page" href="#" data-text="Mirror">
+							Mirror
+						</a>
+					</li>
+					<li  style="--clr:#f443ff"  class="nav-item border-light ">
+						<a class="nav-link active subClass" aria-current="page" href="#" data-text="Pets">
+							Pets
+						</a>
+					</li>
+					<li  style="--clr:#64faf5"  class="nav-item border-light ">
+						<a class="nav-link active subClass" aria-current="page" href="#" data-text="Baking">
+							Baking
+						</a>
+					</li>
+					<li  style="--clr:#178bff"  class="nav-item border-light ">
+						<a class="nav-link active subClass" aria-current="page" href="#" data-text="Tableweare">
+							Tableweare
+						</a>
+					</li>
+					<li  style="--clr:#ff8b17"  class="nav-item border-light ">
+						<a class="nav-link active subClass" aria-current="page" href="#" data-text="towel">
+							towel & mats
+						</a>
+					</li>
+					<li  style="--clr:#17ffbc"  class="nav-item border-light ">
+						<a class="nav-link active subClass" aria-current="page" href="#" data-text="Gift ">
+							Gift card
+						</a>
+					</li>
+
+					<li  style="--clr:#ffffff"  class="nav-item border-light ">
+						<a class="nav-link active subClass" aria-current="page" href="#" data-text="All">
+							All Home
+						</a>
+					</li>
+	</div>
+					<div class="col-md-6  my-auto demoUnderCatImg">
+						<div>
+							<img class="img-fluid" src="https://i.pinimg.com/564x/f6/1d/f5/f61df54386092478c6fb8b0419aede2f.jpg" alt="Tag you're in"></div>
+						<p class="">
+							<span class="DarkGlitch" data-text="homewear stuff">
+								<span class="font-serif">No place's</span>
+								like home</span>
+						</p>
+						<div>
+							<img class="img-fluid" src="https://i.pinimg.com/564x/3a/50/06/3a5006c3f50c7ca95f2d0c6f68bcd097.jpg" alt="where is the Big Bad Wolf ? "></div>
+
+
+					</div>
+
+				</ul>
+			</div>
+
+			<div>
+
+				<li class="nav-item border-bottom border-light pt-2 pb-2 d-flex justify-content-between majorClass">
+					<a class="nav-link text-danger" href="#">Clearance</a>
+					<i class="fa-sharp fa-solid fa-caret-down"></i>
+				</li>
+
+			</div>
+			<div></div>
+		</ul>
+	</div>
 </container>

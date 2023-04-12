@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!
+{% endblock %}
+
+{% block body %}
+	{% include "_partials/_head.html.twig" %}
+	<section class="container mt-3 mb-3  bshadow txt-LightGrey bg-Ardoise">
+		<div class="row loginBlock">
+
+			<div class="col-md-6 col-12 col-lg-4 registerBlock"> 
+			<div class="imgBlockprt"><img class="imgBlock" src="https://i.pinimg.com/564x/b5/58/b3/b558b3576468dfcdef4e8ff395f88563.jpg" alt="jibaro">		</div>
+			<div class="txtblock m-auto">
+
+			<div class="px-app px-glitch  mb-5">
+				<span class="px-glitchtext px-glitchtext-anim display-5 font-handwritten">Not a member of our little gang yet ?</span>
+			</div>
+			<div class="LargeFont display-6" > Join The cult </div> <div class="font-serif ft-size2 mb-5">and be the Godess you deserve to be</div> 
+			<a href="{{path('app_register')}}" class=" mt-5 btn btnRegister">REGISTER</a>   </div>
+			</div>
+
+			<div class="col-md-6 col-lg-8 col-12 p-3 formBody my-auto">
+				<form method="post">
+					{% if error %}
+						<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+					{% endif %}
+
+					{% if app.user %}
+						<div class="mb-3 text-center">
+							You are logged in as
+							{{ app.user.prenom }},
+							<a href="{{ path('app_logout') }}">Logout</a>
+						</div>
+		
+					{% else %}
+				
+
+					<h1 class="h3 pb-3 font-weight-normal text-center">Please sign in</h1>
+					<label for="inputEmail">Email</label>
+					<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+					<label class="mt-3" for="inputPassword">Password</label>
+					<input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+
+					<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+					<button class="btn mt-3 mx-auto mb-3 btn-lg btn-secondary " type="submit">
+						Sign in
+					</button>
+				</form>			{% endif %}
+			</div>
+		</div>
+	</section>
+
+
+	{#
+	        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+	        See https://symfony.com/doc/current/security/remember_me.html
+	
+	        <div class="checkbox mb-3">
+	            <label>
+	                <input type="checkbox" name="_remember_me"> Remember me
+	            </label>
+	        </div>
+	    #}
+
+{% include "_partials/_footer.html.twig" %}
+
+{% endblock %}
