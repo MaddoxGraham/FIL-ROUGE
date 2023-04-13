@@ -31,9 +31,6 @@ class Produit
     #[ORM\Column(length: 255)]
     private ?string $slug = null;
 
-    #[ORM\ManyToOne(inversedBy:'produits',targetEntity: Categorie::class)]
-    private Collection $idCat;
-
     #[ORM\OneToMany(mappedBy: 'RefProduit', targetEntity: Photo::class)]
     private Collection $photos;
 
@@ -46,9 +43,12 @@ class Produit
     #[ORM\OneToMany(mappedBy: 'RefProduit', targetEntity: Stock::class)]
     private Collection $stocks;
 
+    #[ORM\ManyToOne(inversedBy: 'produits')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Categorie $categorie = null;
+
     public function __construct()
     {
-        $this->idCat = new ArrayCollection();
         $this->photos = new ArrayCollection();
         $this->ligneCommandes = new ArrayCollection();
         $this->listes = new ArrayCollection();
@@ -104,35 +104,6 @@ class Produit
     public function setSlug(string $slug): self
     {
         $this->slug = $slug;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Categorie>
-     */
-    public function getIdCat()
-    {
-        return $this->idCat;
-    }
-    public function setIdCat($idCat): self
-    {
-        $this->idCat = $idCat;
-        return $this;
-    }
-
-    public function addIdCat(Categorie $idCat): self
-    {
-        if (!$this->idCat->contains($idCat)) {
-            $this->idCat->add($idCat);
-        }
-
-        return $this;
-    }
-
-    public function removeIdCat(Categorie $idCat): self
-    {
-        $this->idCat->removeElement($idCat);
 
         return $this;
     }
@@ -254,6 +225,18 @@ class Produit
                 $stock->setRefProduit(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getCategorie(): ?Categorie
+    {
+        return $this->categorie;
+    }
+
+    public function setCategorie(?Categorie $categorie): self
+    {
+        $this->categorie = $categorie;
 
         return $this;
     }

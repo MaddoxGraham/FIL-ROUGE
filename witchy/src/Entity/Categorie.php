@@ -28,7 +28,7 @@ class Categorie
     #[ORM\OneToMany(mappedBy: 'parent', targetEntity: self::class)]
     private Collection $subCategories;
 
-    #[ORM\OneToMany(mappedBy: 'idCat', targetEntity: Produit::class)]
+    #[ORM\OneToMany(mappedBy: 'categorie', targetEntity: Produit::class, orphanRemoval: true)]
     private Collection $produits;
 
 
@@ -36,6 +36,7 @@ class Categorie
     {
         $this->subCategories = new ArrayCollection();
         $this->produits = new ArrayCollection();
+
     }
 
     public function getId(): ?int
@@ -109,7 +110,7 @@ class Categorie
     {
         if (!$this->produits->contains($produit)) {
             $this->produits->add($produit);
-            $produit->addIdCat($this);
+            $produit->setCategorie($this);
         }
 
         return $this;
@@ -118,9 +119,14 @@ class Categorie
     public function removeProduit(Produit $produit): self
     {
         if ($this->produits->removeElement($produit)) {
-            $produit->removeIdCat($this);
+            // set the owning side to null (unless already changed)
+            if ($produit->getCategorie() === $this) {
+                $produit->setCategorie(null);
+            }
         }
 
         return $this;
     }
+
+
 }
