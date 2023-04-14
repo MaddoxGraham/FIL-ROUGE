@@ -1,0 +1,10 @@
+{% extends "base.html.twig" %}
+
+{% block title %}{{produit.shortLibel}}{% endblock %}
+
+{% block body %}
+{% include "_partials/_head.html.twig" %}
+<h1> {{produit.shortLibel}} </h1>
+<p> {{produit.longLibel}} </p>
+{% include "_partials/_footer.html.twig" %}
+{% endblock %}

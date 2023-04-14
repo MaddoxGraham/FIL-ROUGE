@@ -2,6 +2,9 @@
 
 	<div class="row flex-nowrap panel">
 
+
+
+
 		<div class=" boxingMove flex-nowrap">
 			<div class=" textToSlide col-md-12 col-lg-4 pe-5 ms-5 me-5 ps-5">
 				💫 Livraison gratuite dés 80€ d'achats ⭐️ 💖
@@ -85,7 +88,7 @@
 				<ul class="navbar-nav undernav underHidden">
 					<div class="col-md-6 catBoxSubMenu">
 						<li style="--clr:#ff1717" class="nav-item border-light">
-							<a class="nav-link active subClass" aria-current="page" href="#"data-text="What">
+							<a class="nav-link active subClass" aria-current="page" href="#" data-text="What">
 								What's new ?
 							</a>
 						</li>
@@ -116,19 +119,34 @@
 					</div>
 				</div>
 
-				<div>
+				<div class="d-flex flex-row">
+
+<!-- génère le titre du menu categories --> 
+
+{% for categorie in categories %}
+{% if (categorie.parent == null) %} 
+		
+
 					<li class="nav-item border-bottom border-light pt-2 pb-2 d-flex justify-content-between majorClass">
-						<a class="nav-link " href="#">Women</a>
+						<a class="nav-link " href="#">{{categorie.nomination}}</a>
 						<i class="fa-sharp fa-solid fa-caret-down"></i>
 					</li>
+
+<!-- génère le titre des sous categories --> 
+
+
 					<ul class="navbar-nav undernav underHidden">
 						<div class=" col-md-6 catBoxSubMenu">
 							<li style="--clr:#ff2003" class="nav-item border-light ">
-								<a class="nav-link active subClass" aria-current="page" href="#" data-text="Dress";>
-									Dress
+								<a class="nav-link active subClass" aria-current="page" href="#" data-text="{{categorie.nomination}}";>
+									{{categorie.nomination}}
 								</a>
 							</li>
 
+
+{% endif %}
+{% endfor %}
+<!-- ending construct by nomination subcat 
 							<li style="--clr:#ff6493" class="nav-item border-light">
 								<a class="nav-link active subClass" aria-current="page" href="#" data-text="Top";>
 									Top
@@ -151,6 +169,7 @@
 									All women clothing
 								</a>
 							</li>
+							-->
 						</div>
 						<div class="col-md-6 my-auto demoUnderCatImg">
 							<div>
@@ -164,8 +183,14 @@
 
 						</div>
 					</ul>
+
+
+
+					
 				</div>
 
+
+<!-- CAT MEN 
 				<div>
 					<li class="nav-item border-bottom border-light pt-2 pb-2 d-flex justify-content-between majorClass">
 						<a class="nav-link " href="#">Men</a>
@@ -213,6 +238,8 @@
 					</ul>
 				</div>
 
+		CAT MEN ENDING		-->
+<!-- CAT SHOES 
 				<div>
 
 					<li class="nav-item border-bottom border-light pt-2 pb-2 d-flex justify-content-between majorClass">
@@ -268,6 +295,11 @@
 					</ul>
 				</li>
 			</div>
+
+
+CAT SHOES ENDING		-->
+<!-- CAT ACCESSORIES 
+
 			<div>
 
 				<li class="nav-item border-bottom border-light pt-2 pb-2 d-flex justify-content-between majorClass">
@@ -321,7 +353,7 @@
 								All Accessories
 							</a>
 						</li>
-					</div>
+					</div>					
 					<div class="col-md-6 my-auto my-auto demoUnderCatImg">
 						<div>
 							<img class="img-fluid" src="https://i.pinimg.com/564x/eb/bf/ea/ebbfea61ab2f62359a278f9fa89b1e56.jpg" alt="Tag you're in"></div>
@@ -337,6 +369,12 @@
 				</ul>
 			</li>
 		</div>
+
+
+CAT ACCESSORIES ENDING		-->		
+<!-- CAT HOME 
+
+
 		<div>
 
 
@@ -400,6 +438,12 @@
 						</a>
 					</li>
 	</div>
+
+
+
+
+
+
 					<div class="col-md-6  my-auto demoUnderCatImg">
 						<div>
 							<img class="img-fluid" src="https://i.pinimg.com/564x/f6/1d/f5/f61df54386092478c6fb8b0419aede2f.jpg" alt="Tag you're in"></div>
@@ -416,7 +460,7 @@
 
 				</ul>
 			</div>
-
+CAT HOME ENDING		-->	
 			<div>
 
 				<li class="nav-item border-bottom border-light pt-2 pb-2 d-flex justify-content-between majorClass">
