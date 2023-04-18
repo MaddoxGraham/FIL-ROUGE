@@ -1,10 +1,104 @@
 {% extends "base.html.twig" %}
 
-{% block title %}{{produit.shortLibel}}{% endblock %}
+{% block title %}
+	{{produit.shortLibel}}
+{% endblock %}
 
 {% block body %}
-{% include "_partials/_head.html.twig" %}
-<h1> {{produit.shortLibel}} </h1>
-<p> {{produit.longLibel}} </p>
-{% include "_partials/_footer.html.twig" %}
+	{% include "_partials/_head.html.twig" %}
+
+
+	<div class="container-fluid mt-5 bg-Ardoise mt-0">
+		<div class="row">
+			<div class="col-lg-4">
+				<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+					<div class="carousel-indicators">
+						{% for photo in produit.photos %}
+							<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ loop.index0 }}" class="active" aria-current="{{ loop.first ? 'true' : 'false' }}" aria-label="Slide {{ loop.index }}"></button>
+						{% endfor %}
+					</div>
+					<div class="carousel-inner">
+						{% for photo in produit.photos %}
+							<div class="carousel-item {{ loop.first ? 'active' }}">
+								<img class="d-block w-100" src="{{ photo.src }}" alt="{{ produit.shortLibel }}">
+							</div>
+						{% endfor %}
+					</div>
+					<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+						<span class="visually-hidden">Previous</span>
+					</button>
+					<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+						<span class="carousel-control-next-icon" aria-hidden="true"></span>
+						<span class="visually-hidden">Next</span>
+					</button>
+				</div>
+				<div class="row mt-3 mb-3">
+					{% for photo in produit.photos %}
+						<div class="col-2 mt-2">
+							<img src="{{ photo.src }}" class="d-block w-100" alt="{{ produit.shortLibel }}" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ loop.index0 }}">
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+			<div class="col-lg-8">
+
+                <div class="HolographicEffect titleFont">
+  <h1 data-text="{{ produit.shortLibel|split(' ')|join('  ') }}">{{ produit.shortLibel }}</h1>
+</div>
+
+
+		
+					<h2 class="font-weight-bold prix text-light">{{ produit.prxHt }}
+						€</h2>
+
+				<div class="mt-4 txt-LightGrey font-serif ">
+					{{ produit.longLibel }}
+				</div>
+				<button type="button" class=" btn-AddToCauldron mt-5">Add to Cauldron</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="container lovingIt">
+		<div class="row mb-5">
+			<div class="col-lg-12">
+				<h2 class="mb-4">You could also love</h2>
+			</div>
+
+			{% for prodCat in categoriesProduit %}
+				{% if prodCat.slug == produit.slug %}
+					{% elseif prodCat.categorie != produit.categorie %}
+					{% else %}
+						<div class="col-lg-2 col-md-4 col-6 mb-4">
+							<div class="card h-100">
+								{% set primaryPhoto = prodCat.photos|filter(p => p.isPrimary is not null and p.isPrimary)|first %}
+								<div class="parentRelatif cardImgSeller">
+									<a href="{{ prodCat.slug }}">
+										<img src="{{ primaryPhoto.src }}" alt="{{ prodCat.shortLibel }}" class="card-img-center img-fluid">
+									</a>
+									<button type="button" class="card-text LargeFont">Add to cauldron</button>
+									{% if prodCat.photos|length > 1 %}
+										{% set secondaryPhotos = prodCat.photos|filter(p => p.isPrimary is null) %}
+										{% for photo in secondaryPhotos %}
+											<div class="secondary-photo" style="display: none;">
+												<img src="{{ photo.src }}" alt="{{ prodCat.shortLibel }}" class="card-img-center img-fluid">
+											</div>
+										{% endfor %}
+									{% endif %}
+								</div>
+								<div class="card-body">
+									<div class="font-serif">{{ prodCat.shortLibel }}</div>
+									<div>{{ prodCat.prxHt }}
+										€</div>
+								</div>
+							</div>
+						</div>
+				{% endif %}
+			{% endfor %}
+		</div>
+	</div>
+
+
+	{% include "_partials/_footer.html.twig" %}
 {% endblock %}

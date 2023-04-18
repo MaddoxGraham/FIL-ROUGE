@@ -41,7 +41,7 @@
 	<div class="BoxTitleContainer my-auto">
 	
 		<div class="col-lg-4 m-auto Logo col-md-12">
-			<img src="assets/medias/WitchyLogo.gif" class=" mx-auto d-block img-fluid" alt="logo Witchy">
+			<img src="{{asset('assets/medias/WitchyLogo.gif')}}" class=" mx-auto d-block img-fluid" alt="logo Witchy">
 		</div>
 		<div class="col-lg-8 titleBox my-auto mx-auto ">
 			<h1 class="display-1">
@@ -59,11 +59,11 @@
 		<button type="button" class="bg-Brown ">
 			<div class="col-md-6 iconMaker panier ">
 			<p class="roudCount m-auto"> <span class="nbr m-auto"> 2</span>  </p>
-			<img src="assets/medias/meh.png" class="img-fluid" alt="votre chaudron">
+			<img src="{{asset('assets/medias/meh.png')}}" class="img-fluid" alt="votre chaudron">
 			</div>
 		</button>
 		<a href="{{ path('app_login')}}" class="bg-Brown ">
-			<div class="col-md-6 iconMaker"><img src="assets/medias/mehProfRec.png" class="img-fluid" alt="votre acount">
+			<div class="col-md-6 iconMaker"><img src="{{asset('assets/medias/mehProfRec.png')}}" class="img-fluid" alt="votre acount">
 			</div>
 		</a>
 
@@ -121,32 +121,23 @@
 
 				<div class="d-flex flex-row">
 
-<!-- génère le titre du menu categories --> 
-
-{% for categorie in categories %}
-{% if (categorie.parent == null) %} 
-		
 
 					<li class="nav-item border-bottom border-light pt-2 pb-2 d-flex justify-content-between majorClass">
-						<a class="nav-link " href="#">{{categorie.nomination}}</a>
+						<a class="nav-link " href="#">WOMEN</a>
 						<i class="fa-sharp fa-solid fa-caret-down"></i>
 					</li>
 
-<!-- génère le titre des sous categories --> 
 
 
 					<ul class="navbar-nav undernav underHidden">
 						<div class=" col-md-6 catBoxSubMenu">
 							<li style="--clr:#ff2003" class="nav-item border-light ">
-								<a class="nav-link active subClass" aria-current="page" href="#" data-text="{{categorie.nomination}}";>
-									{{categorie.nomination}}
+								<a class="nav-link active subClass" aria-current="page" href="#" data-text="Dress";>
+									Dress
 								</a>
 							</li>
 
 
-{% endif %}
-{% endfor %}
-<!-- ending construct by nomination subcat 
 							<li style="--clr:#ff6493" class="nav-item border-light">
 								<a class="nav-link active subClass" aria-current="page" href="#" data-text="Top";>
 									Top
@@ -169,7 +160,7 @@
 									All women clothing
 								</a>
 							</li>
-							-->
+						
 						</div>
 						<div class="col-md-6 my-auto demoUnderCatImg">
 							<div>
@@ -190,7 +181,6 @@
 				</div>
 
 
-<!-- CAT MEN 
 				<div>
 					<li class="nav-item border-bottom border-light pt-2 pb-2 d-flex justify-content-between majorClass">
 						<a class="nav-link " href="#">Men</a>
@@ -238,8 +228,6 @@
 					</ul>
 				</div>
 
-		CAT MEN ENDING		-->
-<!-- CAT SHOES 
 				<div>
 
 					<li class="nav-item border-bottom border-light pt-2 pb-2 d-flex justify-content-between majorClass">
@@ -296,9 +284,6 @@
 				</li>
 			</div>
 
-
-CAT SHOES ENDING		-->
-<!-- CAT ACCESSORIES 
 
 			<div>
 
@@ -371,10 +356,6 @@ CAT SHOES ENDING		-->
 		</div>
 
 
-CAT ACCESSORIES ENDING		-->		
-<!-- CAT HOME 
-
-
 		<div>
 
 
@@ -442,8 +423,6 @@ CAT ACCESSORIES ENDING		-->
 
 
 
-
-
 					<div class="col-md-6  my-auto demoUnderCatImg">
 						<div>
 							<img class="img-fluid" src="https://i.pinimg.com/564x/f6/1d/f5/f61df54386092478c6fb8b0419aede2f.jpg" alt="Tag you're in"></div>
@@ -460,7 +439,7 @@ CAT ACCESSORIES ENDING		-->
 
 				</ul>
 			</div>
-CAT HOME ENDING		-->	
+
 			<div>
 
 				<li class="nav-item border-bottom border-light pt-2 pb-2 d-flex justify-content-between majorClass">

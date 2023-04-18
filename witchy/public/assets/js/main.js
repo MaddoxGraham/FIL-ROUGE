@@ -25,7 +25,31 @@ for (let index = 0; index < catBtn.length; index++) {
 
         }
     })
+
+
 }
-
-
-
+document.addEventListener('DOMContentLoaded', function() {
+    var cards = document.querySelectorAll('.card');
+    cards.forEach(function(card) {
+      var images = card.dataset.images.split(',');
+      var primaryPhoto = card.querySelector('img');
+      var index = 0;
+  
+      if (images.length <= 1) {
+        return;
+      }
+  
+      card.addEventListener('mouseover', function() {
+        if (index < images.length - 1) {
+          index++;
+        } else {
+          index = 0;
+        }
+        primaryPhoto.src = images[index];
+      });
+  
+      card.addEventListener('mouseleave', function() {
+        primaryPhoto.src = images[0];
+      });
+    });
+  });

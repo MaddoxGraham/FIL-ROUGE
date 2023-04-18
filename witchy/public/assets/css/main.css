@@ -8,6 +8,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Bigelow+Rules&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@500&display=swap');
 :root {
   --darkBrown: #3e2723;
   --Brown: #b9a488;
@@ -54,7 +55,9 @@
 .txt-LightGrey {
   color: var(--lightGreySolid) !important;
 }
-
+.mt-0{
+  margin-top: 0 !important;
+}
 body {
   color: var(--darkBrown);
   font-family: 'Megrim', cursive;
@@ -68,6 +71,11 @@ body {
   margin-left: 0 !important;
   margin-right: 0 !important;
   max-width: 100% !important;
+}
+.titleFont{
+  font-family: 'Archivo', sans-serif;
+
+
 }
 
 .LargeFont {
@@ -1837,5 +1845,143 @@ display: block;
     width: 350px;
     height: 350px;
   }
+
+  .carousel-thumbnail {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-right: 5px;
+    border: 2px solid #fff;
+    cursor: pointer;
+  }
   
+  .carousel-thumbnail:hover {
+    border-color: #f00;
+  }
+  
+
+
+  .lovingIt .parentRelatif {
+    position: relative;
+    background-color: var(--lightSand);
+  }
+  .lovingIt .card {
+    height: auto;
+    max-height: 300px; /* ajustez cette valeur en fonction de vos besoins */
+    margin-bottom: 20px;
+  }
+  
+  .lovingIt .cardImgSeller {
+    height: 200px; /* ajustez cette valeur en fonction de la hauteur souhaitée pour l'image */
+  }
+  
+  .lovingIt .card-text {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 18px;
+  }
+  
+  
+  .lovingIt .card-text {
+    padding-top: 5%;
+    padding-bottom: 5%;
+    width: 100%;
+    z-index: 2;
+    position: absolute;
+    text-align: center;
+    bottom: 0;
+    background-color: var(--lightGrey);
+    color: var(--ardoise);
+    font-family: fantasy;
+    font-size: 24px;
+    left: 0;
+  }
+
+
+}
+
+
+
+.HolographicEffect h1 {
+  position: relative;
+  z-index: 1;
+  font-size: 3em;
+  color: white;
+  transform: translate(0, 0);
+}
+
+.HolographicEffect h1:before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: -1; 
+  color: rgb(18, 255, 255);
+  transform: translate(-1px, -1px);
+}
+.HolographicEffect h1:after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;   
+  color: rgb(235, 10, 255);
+  transform: translate(1px, 1px);
+}
+
+.btn-AddToCauldron{
+  position: relative;
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 10px;
+  border: none;
+  border-radius: 15px;
+  font-size: 24px;
+  color: #000;
+  width: 90%;
+  background: linear-gradient(to right, #66C2FF, #FF6EC7);
+  box-shadow: 0 0 10px 0 #fff, 0 0 20px 0 #fff, 0 0 30px 0 #fff, 0 0 40px #66C2FF, 0 0 70px #66C2FF, 0 0 80px #66C2FF, inset 0 0 10px 0 rgba(255,255,255,.5);
+  transition: all 0.4s ease;
+}
+
+.btn-AddToCauldron:hover{
+  color: #fff;
+  background: linear-gradient(to right, #66C2FF, #FF6EC7);
+  box-shadow: 0 0 10px 0 #fff, 0 0 20px 0 #fff, 0 0 30px 0 #fff, 0 0 40px #FF6EC7, 0 0 70px #FF6EC7, 0 0 80px #FF6EC7, inset 0 0 10px 0 rgba(255,255,255,.5);
+  transform: translateY(-5px);
+}
+
+.btn-AddToCauldron::before{
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  z-index: -1;
+  border-radius: 20px;
+  background: rgba(255,255,255,.1);
+  filter: blur(20px);
+}
+
+.btn-AddToCauldron::after{
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  z-index: -2;
+  border-radius: 20px;
+  background: rgba(255,255,255,.1);
+  filter: blur(40px);
+}
+
+.prix{
+  font-size: 5rem;
+  text-align: right;
+  margin-right: 5%;
 }

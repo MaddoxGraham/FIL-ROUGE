@@ -235,13 +235,13 @@ $produit = $this->createProduct(' Fairywalker Platform Sneakers ',
 139.95,
 13,
 [
-'https://cdn.shopify.com/s/files/1/0634/6335/8721/products/1adwwd9smHoevIJIHW8J1V6INPMWn35I-24.jpg?v=1677866153',
-'https://cdn.shopify.com/s/files/1/0634/6335/8721/products/ybrKSAg6vbPs7qlynUId7DwnewcQD1Ep-24.jpg?v=1675790075',
-'https://cdn.shopify.com/s/files/1/0634/6335/8721/products/TNbaBxFZarfkGxgvIDBjNFVSofpBHTyr-24_6647bf69-a8cd-4f66-9715-71df4a4f843d.jpg?v=1675790075',
-'https://cdn.shopify.com/s/files/1/0634/6335/8721/products/IG3MTqjUxcmBJOG1sopVBHoKViJYRNNf-24_a0b9e881-6069-47cb-84c0-01b3e42ee467.jpg?v=1675790075',
-'https://cdn.shopify.com/s/files/1/0634/6335/8721/products/0Jj7xIF7Nf7TBUl8PDhr30eFYv03P83l-24_e1afd6a3-9e26-4c95-aaf2-027116573bcd.jpg?v=1674845199'
+'https://cdn.shopify.com/s/files/1/0634/6335/8721/products/1adwwd9smHoevIJIHW8J1V6INPMWn35I.jpg?v=1681497639',
+'https://cdn.shopify.com/s/files/1/0634/6335/8721/products/TNbaBxFZarfkGxgvIDBjNFVSofpBHTyr.jpg?v=1681497624',
+'https://cdn.shopify.com/s/files/1/0634/6335/8721/products/ybrKSAg6vbPs7qlynUId7DwnewcQD1Ep.jpg?v=1681497632',
+'https://cdn.shopify.com/s/files/1/0634/6335/8721/products/TNbaBxFZarfkGxgvIDBjNFVSofpBHTyr-24_6647bf69-a8cd-4f66-9715-71df4a4f843d.jpg?v=1675790075'
 ],
 $manager);
+
 
 $produit = $this->createProduct(' Neon Jawbreaker Traitor Boots ',
 'Club Exx Neon Jawbreaker Traitor Boots make their jaws drop, babe! You are lethal on the dance floor in these wedge platform boots that have a contrast neon green design all over, a vegan leather construction, adjustable lace-ups, and side zip closures.',

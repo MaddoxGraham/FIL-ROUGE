@@ -4,6 +4,35 @@
 
 {% block body %}
 {% include "_partials/_head.html.twig" %}
-<h1>produits</h1>
+
+<div class="container bestSeller">
+    <div class="row pt-5 bg-Ardoise">
+        {% for produit in produits %}
+            <div class="col-lg-3 mb-5 col-md-6">
+                <div class="card" data-images="{{ produit.photos|map(p => p.src)|join(',') }}">
+                    {% set primaryPhoto = produit.photos|filter(p => p.isPrimary is not null and p.isPrimary)|first %}
+                    <div class="parentRelatif cardImgSeller">
+                        <a href="{{ produit.slug }}">
+                            <img src="{{ primaryPhoto.src }}" alt="{{ produit.shortLibel }}" class="card-img-top img-fluid">
+                        </a>
+                        <button type="button" class="card-text LargeFont">Add to cauldron</button>
+                        {% if produit.photos|length > 1 %}
+                            {% set secondaryPhotos = produit.photos|filter(p => p.isPrimary is null) %}
+                            {% for photo in secondaryPhotos %}
+                                <div class="secondary-photo" style="display: none;">
+                                    <img src="{{ photo.src }}" alt="{{ produit.shortLibel }}" class="card-img-top img-fluid">
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                    <div class="card-body">
+                        <div class="font-serif">{{ produit.shortLibel }}</div>
+                        <div>{{ produit.prxHt }} €</div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
 {% include "_partials/_footer.html.twig" %}
 {% endblock %}
