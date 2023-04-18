@@ -8,7 +8,7 @@
 	{% include "_partials/_head.html.twig" %}
 
 
-	<div class="container-fluid mt-5 bg-Ardoise mt-0">
+	<div class="container-fluid mt-5 pt-5 bg-Ardoise mt-0">
 		<div class="row">
 			<div class="col-lg-4">
 				<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
@@ -41,23 +41,31 @@
 					{% endfor %}
 				</div>
 			</div>
-			<div class="col-lg-8">
+			
+			<div class="col-lg-8 text-left">
+            <div class="d-flex flex-row me-2 ">
+            
+            <div class="HolographicEffect titleFont">
+					<h1 data-text="{{ produit.shortLibel|split(' ')|join(' ') }}">{{ produit.shortLibel }}</h1>
+				</div>
+            <div class="font-weight-bold retro-chrome text-light">
+              <span>       {{ produit.prxHt }}€</span>
+            <span>{{ produit.prxHt }}€</span>
 
-                <div class="HolographicEffect titleFont">
-  <h1 data-text="{{ produit.shortLibel|split(' ')|join('  ') }}">{{ produit.shortLibel }}</h1>
-</div>
+					</div>
+ </div>
+				
 
+	
 
-		
-					<h2 class="font-weight-bold prix text-light">{{ produit.prxHt }}
-						€</h2>
-
-				<div class="mt-4 txt-LightGrey font-serif ">
+				<div class="mt-4 txt-LightGrey text-justify font-serif mb-5 ">
 					{{ produit.longLibel }}
 				</div>
 				<button type="button" class=" btn-AddToCauldron mt-5">Add to Cauldron</button>
 			</div>
+
 		</div>
+		
 	</div>
 
 	<div class="container lovingIt">
@@ -66,35 +74,33 @@
 				<h2 class="mb-4">You could also love</h2>
 			</div>
 
-			{% for prodCat in categoriesProduit %}
-				{% if prodCat.slug == produit.slug %}
-					{% elseif prodCat.categorie != produit.categorie %}
-					{% else %}
-						<div class="col-lg-2 col-md-4 col-6 mb-4">
-							<div class="card h-100">
-								{% set primaryPhoto = prodCat.photos|filter(p => p.isPrimary is not null and p.isPrimary)|first %}
-								<div class="parentRelatif cardImgSeller">
-									<a href="{{ prodCat.slug }}">
-										<img src="{{ primaryPhoto.src }}" alt="{{ prodCat.shortLibel }}" class="card-img-center img-fluid">
-									</a>
-									<button type="button" class="card-text LargeFont">Add to cauldron</button>
-									{% if prodCat.photos|length > 1 %}
-										{% set secondaryPhotos = prodCat.photos|filter(p => p.isPrimary is null) %}
-										{% for photo in secondaryPhotos %}
-											<div class="secondary-photo" style="display: none;">
-												<img src="{{ photo.src }}" alt="{{ prodCat.shortLibel }}" class="card-img-center img-fluid">
-											</div>
-										{% endfor %}
-									{% endif %}
-								</div>
-								<div class="card-body">
-									<div class="font-serif">{{ prodCat.shortLibel }}</div>
-									<div>{{ prodCat.prxHt }}
-										€</div>
-								</div>
-							</div>
+			{% set randomProducts = categoriesProduit|shuffleArray|filter(p => p.slug != produit.slug)|slice(0,6) %}
+
+
+			{% for prodCat in randomProducts %}
+				<div class="col-lg-2 col-md-4 col-6 mb-4">
+					<div class="card h-100">
+						{% set primaryPhoto = prodCat.photos|filter(p => p.isPrimary is not null and p.isPrimary)|first %}
+						<div class="parentRelatif cardImgSeller">
+							<a href="{{ prodCat.slug }}">
+								<img src="{{ primaryPhoto.src }}" alt="{{ prodCat.shortLibel }}" class="card-img-center img-fluid">
+							</a>
+							<button type="button" class="card-text LargeFont">Add to cauldron</button>
+							{% if prodCat.photos|length > 1 %}
+								{% set secondaryPhotos = prodCat.photos|filter(p => p.isPrimary is null) %}
+								{% for photo in secondaryPhotos %}
+									<div class="secondary-photo" style="display: none;">
+										<img src="{{ photo.src }}" alt="{{ prodCat.shortLibel }}" class="card-img-center img-fluid">
+									</div>
+								{% endfor %}
+							{% endif %}
 						</div>
-				{% endif %}
+						<div class="card-body">
+							<div class="font-serif">{{ prodCat.shortLibel }}</div>
+							<div>{{ prodCat.prxHt }}€</div>
+						</div>
+					</div>
+				</div>
 			{% endfor %}
 		</div>
 	</div>
