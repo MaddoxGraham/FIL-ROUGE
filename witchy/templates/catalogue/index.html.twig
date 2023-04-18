@@ -1,7 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-	{% include "_partials/_head.html.twig" %}
+
+	{% set categories = categories %}
+	{% include '_partials/_head.html.twig' with {'categories': categories} %}
 
 	<div class="container  indexDemo">
 
