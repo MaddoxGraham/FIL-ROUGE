@@ -44,5 +44,6 @@ class CatalogueController extends AbstractController
             'siblingsData' => $siblingsData
         ]);
     }
+    
 
 }
